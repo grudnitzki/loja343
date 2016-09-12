@@ -1,0 +1,100 @@
+<style>
+.Caption {
+font-family: Arial;
+font-weight: bold;
+color:      #123456;
+}
+</style>
+
+
+<script>
+
+
+var SlideShowSpeed = 4000;
+
+
+var CrossFadeDuration = 3;
+
+var Picture = new Array(); // don't change this
+var Caption = new Array(); // don't change this
+
+
+
+Picture[1]  = 'https://www.rumo.com.br/lojas/00000343/images/slide001.jpg';
+Picture[2]  = 'https://www.rumo.com.br/lojas/00000343/images/slide002.jpg';
+Picture[3]  = 'https://www.rumo.com.br/lojas/00000343/images/slide003.jpg';
+Picture[4]  = 'https://www.rumo.com.br/lojas/00000343/images/slide004.jpg';
+Picture[5]  = 'https://www.rumo.com.br/lojas/00000343/images/slide005.jpg';
+
+
+
+Caption[1]  = "Vibe Therapy - Os Vibradores Mais Macios do Mundo";
+Caption[2]  = "Feito com 100% de Silicone Médico";
+Caption[3]  = "FRETE GRÁTIS para Todo Brasil na Compra de Qualquer Vibe Therapy";
+Caption[4]  = "Vibe Therapy - Os Vibradores Mais Macios do Mundo";
+Caption[5]  = "Feito com 100% de Silicone Médico";
+
+
+var tss;
+var iss;
+var jss = 1;
+var pss = Picture.length-1;
+
+var preLoad = new Array();
+for (iss = 1; iss < pss+1; iss++){
+preLoad[iss] = new Image();
+preLoad[iss].src = Picture[iss];}
+
+function runSlideShow(){
+if (document.all){
+document.images.PictureBox.style.filter="blendTrans(duration=2)";
+document.images.PictureBox.style.filter="blendTrans(duration=CrossFadeDuration)";
+document.images.PictureBox.filters.blendTrans.Apply();}
+document.images.PictureBox.src = preLoad[jss].src;
+if (document.getElementById) document.getElementById("CaptionBox").innerHTML= Caption[jss];
+if (document.all) document.images.PictureBox.filters.blendTrans.Play();
+jss = jss + 1;
+if (jss > (pss)) jss=1;
+tss = setTimeout('runSlideShow()', SlideShowSpeed);
+}
+
+</script>
+
+</head>
+
+
+<body onload=runSlideShow() bgcolor=#ffffff>
+
+
+
+<CENTER><table border=0 cellpadding=0 cellspacing=0>
+  <tr>
+    <td width=572 height=286>
+    <a href="/sistema/ListaProdutos.asp?IDLoja=343&Y=9644416990566&IDCategoria=2085" target="_top"><img src="https://www.rumo.com.br/lojas/00000343/images/slide001.jpg" name=PictureBox width=567 height=286 border="0" alt="Clique para Ver Mais"></a>
+    </td>
+  </tr>
+  <tr>
+
+	<td id=CaptionBox class=Caption align=center bgcolor=#ffffff>
+     Vibe Therapy - Os Vibradores Mais Macios do Mundo
+    </td>
+  </tr>
+</table></center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src=" http://busca.lojadoprazer.com.br/scripts/integracao/e-commercesearch.js"></script></BODY>
+
+</html>
