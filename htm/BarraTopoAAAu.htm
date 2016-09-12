@@ -1,0 +1,383 @@
+<link rel="stylesheet" href="<Baseloja>htm/layout.css" type="text/css" media="all">
+<!--[if IE]> 
+<style>
+.os_eDepartamentos ul li a { display:inline !important; padding:0 0 0 17px !important; line-height:18px}
+.os_eNewsletter {background:url(../lojas/000343/images/layout/bgNewsIE.gif) no-repeat}
+</style>
+<![endif]-->
+<script type="text/javascript">
+// var globais
+var pdet  = "";
+var pdet2 = "";
+var pdet3 = "";
+var pdet4 = "";
+var exibeCart = "";
+var IDLoja='<IDLoja>';
+var IDLojaGrid='<IDLoja>'; 
+var IDLojaNum='<IDLojaNum>';
+var sCaminhoImagens='<BaseLoja>'+'images/';
+var sCaminhoProds='<BaseLoja>'+'prod/';
+</script>
+<script type="text/javascript">
+// carrinho no topo
+var IDLoja="<IDLojaNum>";
+if (window.XMLHttpRequest) { xmlhttp=new XMLHttpRequest(); }
+else { xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); }
+xmlhttp.open("GET","XMLCart.asp?IDLoja="+IDLoja+"",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML; 
+var x=xmlDoc.getElementsByTagName("item");
+var z=xmlDoc.getElementsByTagName("cart");
+try{currencyProdCart=(z[0].getElementsByTagName("currency")[0].childNodes[0].nodeValue);}
+catch(e){currencyProdCart=""}
+try{TotalQtyProdCart=(z[0].getElementsByTagName("TotalQty")[0].childNodes[0].nodeValue);}
+catch(e){TotalQtyProdCart="0"}
+try{subtotalProdCart=(z[0].getElementsByTagName("subtotal")[0].childNodes[0].nodeValue);}
+catch(e){subtotalProdCart="0"}
+var QtdCesta=TotalQtyProdCart;
+if (QtdCesta>0) { exibeCart = "<a href='/addproduto.asp?idloja=343'><span class='os_itens'>MEU CARRINHO</span><br><span class='os_itens'>R$ "+ subtotalProdCart +"</span><br><strong>"+ TotalQtyProdCart +" ITENS</strong></a>"; }
+else { exibeCart = "<span class='os_itens'>MEU CARRINHO<br>0 ITENS</span>"; }
+</script>
+<script src="<BaseLoja>htm/JurosParcelas.js" type="text/javascript"></script>
+<script src="<BaseLoja>htm/AbtLojaLib.js" type="text/javascript"></script>
+<script src="<Baseloja>htm/js/jquery.js?ver=1.6.1" type="text/javascript"></script>
+<script src="<Baseloja>htm/js/cycle.js" type="text/javascript"></script>
+<script src="<Baseloja>htm/js/easing.js" type="text/javascript"></script>
+<script type='text/javascript' src='<Baseloja>htm/js/megamenu.js'></script>
+<script type='text/javascript' src='<Baseloja>htm/js/hoverIntent.js'></script>
+<script type='text/javascript' src='<Baseloja>htm/js/abas.js'></script>
+<script type="text/javascript">
+$(document).ready(function($){
+	$('#mega-menu').dcMegaMenu({
+		rowItems: '5',
+		speed: 'fast',
+		effect: 'fade'
+	});
+});
+</script>
+<div class="os_topo" id="topoPed">
+  <div class="os_tBar">
+    <!--logo-->
+    <h1><a href="http://www.lojadoprazer.com.br">Loja do Prazer</a></h1>
+    <!--busca-->
+    <div class="os_tBusca">
+      <form name="fBusca" method="GET" action="ListaProdutos.asp?IDLoja=343">
+        <input type="hidden" name="IDLoja" value="343">
+        <input type="hidden" name="Digitada" value="True">
+        <input name="Texto" type="text" title="Digite a palavra desejada" accesskey="0" class="os_bCampo" value="Digite aqui o que procura" onfocus="if (this.value == 'Digite aqui o que procura') {this.value='';}" onblur="if (this.value == '') {this.value='Digite aqui o que procura';}" />
+        <input type="submit" name="ok" value="" class="os_bBotao">
+      </form>
+    </div>
+    <!--busca avancada-->
+    <div class="os_tAvancada"><a href="/buscaavancada.asp?idloja=343">busca avan&ccedil;ada</a></div>
+    <!--banner1-->    
+    <div class="os_tBanner1"><a href="/page,idloja,343,arq,AbtDuvidas.htm"><img src="<BaseLoja>images/layout/banner/privacidade.png" alt="Compra segura, embalagem discreta e privacidade garantida" /></a></div>
+    <!--cesta-->
+    <div class="os_tCesta"><script type="text/javascript">document.write(exibeCart);</script></div>    
+  </div>
+  <div class="os_tCategorias">
+    <div class="os_navCat">
+      <ul id="mega-menu" class="mega-menu">
+        <li class="pai"><a href="/prod,idloja,343,IDCategoria,186250,acessorios-eroticos" class="pai">Acess&oacute;rios</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,174727,acessorios-de-ouro">Acess&oacute;rios de Ouro </a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2065,acessorios-femininos">Acess&oacute;rios Femininos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2076,acessorios-masculinos">Acess&oacute;rios Masculinos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2148,acessorios-para-bombas">Acess&oacute;rios Avulsos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,3736,acessorios-pompoarismo">Acess&oacute;rios Pompoarismo</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2059,aneis-penianos">An&eacute;is Penianos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,5166,bolinhas-anais">Bolinhas Anais</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,9613,capas-penianas-e-extensor">Capas Penianas e Extensores</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,181224,cilios-posticos">C&iacute;lios Posti&ccedil;os</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2062,cintas-penianas">Cintas Penianas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2149,bombas-penianas">Desenvolvedores Penianos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,113355,duchas-higienicas">Duchas Higi&ecirc;nicas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2064,estimuladores-e-dedeiras">Estimuladores/Dedeiras</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117985,estimuladores-de-prostata">Estimuladores de Pr&oacute;stata</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2066,kits-eroticos">Kits Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,76824,livros-eroticos">Livros Er&oacute;ticos</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,137269,mascaras-sensuais">M&aacute;scaras Sensuais</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,11222,massageadores-eroticos">Massageadores Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,3087,plugs-anais-com-vibro">Plug Anal com Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,113297,plus-anais-sem-vibro">Plug Anal sem Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,19034,plugs-anais-em-cristal">Plug Anal em Cristal</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,35396,sandalias-eroticas">Sandálias Er&oacute;ticas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,165018,tapa-mamilos">Tapa Mamilos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,186279,preservativos">Preservativos</a></li>                
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA ACESSORIOS-->                  
+                  <prod out="p254" id="3572957">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,IDLoja,343,IDCategoria,186251,brincadeiras-e-jogos" class="pai">Brincadeiras</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,121850,baralhos-eroticos">Baralhos Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,99182,brincadeiras-diversas">Brincadeiras Diversas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,90856,canecas-eroticas">Canecas Er&oacute;ticas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,134024,chocolates-eroticos">Chocolates Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,113301,dadinhos-eroticos">Dadinhos Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,3179,jogos-eroticos">Jogos Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,130451,revistas-eroticas-hetero">Revistas Er&oacute;ticas H&eacute;tero</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,129977,velas-eroticas">Velas Er&oacute;ticas</a></li>
+              </ul>
+            </li>                        
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA BRINCADEIRAS-->
+                  <prod out="p254" id="2256153">
+                </li>
+              </ul>
+            </li>
+          </ul>        
+        </li>
+        <li class="pai"><a href="/prod,idloja,343,IDCategoria,186252,cosmeticos" class="pai">Cosm&eacute;ticos</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117206,bolinhas-de-oleo-corporal">Bolinhas de &Oacute;leo Corporal</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,127160,comestiveis">Comest&iacute;veis</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,108992,corpo-e-banho">Corpo e Banho</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,107298,energeticos">Energ&eacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,141444,esmaltes-afrodisiacos">Esmaltes Afrodisíacos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117207,excitante-unissex">Excitante Unissex</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117200,gel-para-sexo-anal">Gel para Sexo Anal</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117203,gel-do-beijo">Gel do Beijo</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117204,gel-feminino">Gel Feminino</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117205,gel-masculino">Gel Masculino</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117201,gel-retardante">Gel Retardante</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,130049,kit-de-cosmeticos">Kits Diversos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117198,lamina-bucal">L&acirc;minas Bucais</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,160266,locao-efervescente">Lo&ccedil;&atilde;o Efervescente</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,130050,locao-para-massagem">Lo&ccedil;&atilde;o para Massagem</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2079,lubrificantes">Lubrificantes</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117202,gel-para-massagem-hot">Gel para Massagem HOT</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117208,gel-para-massagem-ice">Gel para Massagem ICE</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,3502,perfumes-afrodisiacos">Perfumes Afrodis&iacute;acos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,129849,sabonetes-eroticos">Sabonetes Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,117199,sabonetes-intimos">Sabonetes &Iacute;ntimos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,127159,velas-para-massagem">Velas para Massagem</a></li>               
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA COSMETICOS-->
+                  <prod out="p254" id="596001">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,idloja,343,IDCategoria,186253,fantasias-e-lingeries" class="pai regra">Lingeries</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,186120,fantasias-com-peruca">Fantasias com Peruca Fem</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2110,fantasias-femininas">Fantasias Er&oacute;ticas Fem</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,126760,fantasias-masculinas">Fantasias Er&oacute;ticas Masc</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,136818,lingeries-linha-gg">Lingeries GG (Plus Size)</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,177907,baby-dolls">Baby Dolls</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,92085,biquinis-eroticos">Biquinis Er&oacute;ticos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2090,bodies">Bodies</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2091,calcinhas-fio-dental">Calcinhas Fio Dental</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,179859,calcinhas-masculinas">Calcinhas Masculinas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,140821,calcas-sensuais">Calças Sensuais</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,177908,camisolas">Camisolas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2094,combinetes">Combinetes e Camisetes</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2100,conjuntos-sensuais">Conjuntos Sensuais</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,120724,corselets">Corselets</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,4946,cuecas-eroticas">Cuecas Er&oacute;ticas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2099,espartilhos">Espartilhos</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,143747,luvas">Luvas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,140608,macacoes-sensuais">Macac&otilde;es Sensuais</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,167454,meias-avulsas">Meias Avulsas</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,41492,roupas-sensuais">Roupas Sensuais (Clubwear)</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,24307,saias-e-mini-shorts">Saias e Mini Shorts</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,175698,sutias">Suti&atilde;s</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,13580,vestidos-sensuais">Vestidos Sensuais</a></li>                 
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA LINGERIES-->                  
+                  <prod out="p254" id="3567194">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,idloja,343,IDCategoria,186257,filmes-em-dvd-e-blu-ray" class="pai regra3">Filmes</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,71295,blu-ray-hetero-importado">Blu-Ray H&eacute;tero Importado</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2833,dvd-hetero-nacional">DVD Porn&ocirc; Nacional</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2834,dvd-hetero-importado">DVD Porn&ocirc; Importado</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,11221,dvd-lesbica">DVD L&eacute;sbica</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,8709,dvd-gay-nacional">DVD Gay Nacional</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,8710,dvd-gay-importado">DVD Gay Importado</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,9019,dvd-travesti">DVD Travesti</a></li>
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA FILMES-->                  
+                  <prod out="p254" id="1961534">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,idloja,343,IDCategoria,186255,penis-realisticos" class="pai regra2">P&ecirc;nis</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,37013,penis-importados">Importados</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,37011,penis-importados-vibro">Importados com Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118907,penis-ate-12cm">Até 12cm</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118908,penis-13-a-15cm">13 a 15cm</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118900,penis-13-a-15cm-com-vibro">13 a 15cm com Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118909,penis-16-a-18cm">16 a 18cm</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118901,penis-16-a-18cm-com-vibro">16 a 18cm com Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118910,penis-19-a-21cm">19 a 21cm</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118902,penis-19-a-21cm-com-vibro">19 a 21cm com Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118911,penis-22-a-24cm">22 a 24cm</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118903,penis-22-a-24cm-com-vibro">22 a 24cm com Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118912,penis-acima-de-25cm">Acima de 25cm</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118904,penis-acima-de-25cm-vibro">Acima de 25cm com Vibro</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118913,penis-duplo">P&ecirc;nis Duplo</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118906,penis-duplo-com-vibro">P&ecirc;nis Duplo com Vibro</a></li>
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA PENIS-->                  
+                  <prod out="p254" id="3270119">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,idloja,343,IDCategoria,186256,vibradores" class="pai">Vibradores</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,IDLoja,343,IDCategoria,175759,vibradores-classicos">Cl&aacute;ssicos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2084,vibradores-diversos">Diversos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2085,vibradores-multi-funcoes"> Multi-Fun&ccedil;&otilde;es</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,118123,vibradores-rotativos">Rotativos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,12040,vibradores-ponto-g">Ponto G</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,2086,vibradores-femininos">Femininos</a></li>
+                <li><a href="/prod,IDLoja,343,IDCategoria,160330,higienizador-para-vibradores">Higienizador para Vibradores</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><a href="/prod,idloja,343,avancada,true,digitada,true,texto,leaf">Leaf - Vibradores Ecol&oacute;gicos</a></li>
+                <li><a href="/prod,idloja,343,avancada,true,digitada,true,texto,zini">Zini - Para os Seus Desejos</a></li>
+                <li><a href="/prod,idloja,343,avancada,true,digitada,true,texto,b+swish">B Swish - Acess&oacute;rios Chiques</a></li>
+                <li><a href="prod,idloja,343,avancada,true,digitada,true,texto,lelo">Lelo - Produtos de Luxo</a></li>
+                <li><a href="prod,idloja,343,avancada,true,digitada,true,texto,evolved">Evolved - O Amor Est&aacute; de Volta</a></li>
+                <li><a href="prod,idloja,343,avancada,true,digitada,true,texto,vanity+by+jopen">Vanity - Fun&ccedil;&atilde;o e Fantasia</a></li>
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA VIBRADORES-->                  
+                  <prod out="p254" id="3426967">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="paiCat"><a href="#" class="paiCat">Veja todoso os departamentos</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="/prod,idloja,343,IDCategoria,186250,acessorios-eroticos">Acess&oacute;rios Er&oacute;ticos </a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,2816,bonecas-inflaveis">Bonecas/Bonecos Infl&aacute;veis</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186251,brincadeiras-e-jogos">Brincadeiras e Jogos</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186259,casa-romantica">Casa Rom&acirc;ntica</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186252,cosmeticos">Cosméticos Sensuais</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li><a href="/prod,idloja,343,IDCategoria,186253,fantasias-e-lingeries">Fantasias e Lingeries</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186257,filmes-em-dvd-e-blu-ray">Filmes em DVD e Blu-Ray</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186284,masturbadores-masculinos">Masturbadores Masculinos</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186278,para-presentear">Para Presentear</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186255,penis-realisticos">P&ecirc;nis Realísticos</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li><a href="/prod,idloja,343,IDCategoria,186279,preservativos">Preservativos</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186280,sado-e-fetiches">Sadomasoquismo/Fetiche</a></li>
+                <li><a href="/prod,idloja,343,avancada,true,digitada,true,texto,leaf+zini+b-swish+lelo+evolved,any,true">Vibradores de Luxo</a></li>
+                <li><a href="/prod,idloja,343,IDCategoria,186256,vibradores">Vibradores</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li><a href="/listaprodutos.asp?idloja=343&promocao=True" class="dpromolanc">PROMO&Ccedil;&Otilde;ES</a></li>
+                <li><a href="/listaprodutos.asp?idloja=343&lancamento=True" class="dpromolanc">LAN&Ccedil;AMENTOS</a></li>
+              </ul>
+            </li>            
+          </ul>
+        </li>
+      </ul>      
+    </div>    
+    <div class="os_il1"></div>
+  </div>
+  <div class="os_tInformacoes">
+    <div class="fc_Banner1"><img src="<BaseLoja>images/layout/banner/banner1.gif" alt="" /></div>
+    <div class="os_tBannerSeguro"><img src="<BaseLoja>images/layout/banner/seguranca.gif" alt="Compra segura" /></div>
+  </div>  
+</div>
+
+<!-- final barraTopo
