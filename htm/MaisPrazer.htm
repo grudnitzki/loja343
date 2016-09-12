@@ -1,0 +1,289 @@
+<!--Mais prazer-->
+
+
+<style>
+
+.zFMaisPrazerContent{width:950px;height:auto;}
+
+.zFMaisPrazerMenu{width:950px;height:80px;margin:0px auto;}
+
+
+
+
+.zFHeaderContentUL1{width:95px;height:80px;background-color:#ff283a;margin:0px 0px 0px 9px;text-align:center;float:left;list-style-type:none;}
+.zFHeaderContentLI{font-size:14px;color:#ffffff;font-weight:bold;margin:0px 0px 0px 0px;font-family:Arial;text-decoration:none;}
+.zFMaisPrazerMenu a{text-decoration:none;}
+a:hover .zFHeaderContentUL1 .zFHeaderContentLI{text-decoration:none;}
+
+
+.zFMaisPrazerSearch{width:950px;height:80px;margin:5px auto;}
+
+</style>
+
+
+<div class="zFMaisPrazerContent">
+	<!-- Mais Prazer Menu -->
+	<div class="zFMaisPrazerMenu">
+		<a href="https://www.rumo.com.br/Cadastro.asp?IDLoja=<IDLoja>">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer1.png" width="40" height="40" alt="Cadastro" /></li>
+				<li class="zFHeaderContentLI">Notícias</li>
+			</ul>
+		</a>
+		<a href="Newsletter.asp?IDLoja=<IDLoja>">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer2.png" width="40" height="40" alt="Newsletter" /></li>
+				<li class="zFHeaderContentLI">Produtos</li>
+			</ul>
+		</a>
+		<a href="https://www.rumo.com.br/Track.asp?IDLoja=<IDLoja>">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer3.png" width="40" height="40" alt="Seu pedido" /></li>
+				<li class="zFHeaderContentLI">Curiosidades</li>
+			</ul>
+		</a>
+		<a href="/page,idloja,<IDLojaNum>,arq,favoritos.htm,produtos-favoritos">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer4.png" width="40" height="40" alt="Favoritos" /></li>
+				<li class="zFHeaderContentLI">Ciência</li>
+			</ul>
+		</a>
+		<a href="Ajuda.asp?IDLoja=<IDLoja>">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer5.png" width="40" height="40" alt="Ajuda" /></li>
+				<li class="zFHeaderContentLI">Saúde</li>
+			</ul>
+		</a>
+		<a href="https://www.rumo.com.br/Cadastro.asp?IDLoja=<IDLoja>">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer6.png" width="40" height="40" alt="Cadastro" /></li>
+				<li class="zFHeaderContentLI">Tecnologia</li>
+			</ul>
+		</a>
+		<a href="Newsletter.asp?IDLoja=<IDLoja>">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer7.png" width="40" height="40" alt="Newsletter" /></li>
+				<li class="zFHeaderContentLI">Reportagem</li>
+			</ul>
+		</a>
+		<a href="/page,idloja,<IDLojaNum>,arq,favoritos.htm,produtos-favoritos">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer8.png" width="40" height="40" alt="Favoritos" /></li>
+				<li class="zFHeaderContentLI">Sexo</li>
+			</ul>
+		</a>
+		<a href="Ajuda.asp?IDLoja=<IDLoja>">
+			<ul class="zFHeaderContentUL1">
+				<li>&nbsp;</li>
+				<li><img src="<BaseLoja>images/IcMaisPrazer9.png" width="40" height="40" alt="Ajuda" /></li>
+				<li class="zFHeaderContentLI">Bem-estar</li>
+			</ul>
+		</a>
+	</div>
+	<!-- Fim - Mais Prazer Menu -->
+
+	<!-- Mais Prazer Search -->
+	<div class="zFMaisPrazerSearch">
+		<table id=idNewsFC width=285 cellspacing=0 cellpadding=3 align=left class=EstTabBorda>
+		 <form name=BuscaNoticia method=GET action=/sistema/noticias.asp>
+		 <input type=hidden name=IDLoja value=343>
+		   <tr>
+		    <td>
+		    <table width=283 cellspacing=0 cellpadding=3 align=center class=EstTabQuadro>
+		       <tr>
+		         <td class=mntxt><b>Localize textos específicos:</b></td>
+		
+		         <td class=mntxt><b>Procurar resultados:</b></td>
+		
+		       </tr>
+		       <tr>
+		        <td><input type=text size=20 maxlength=20 name=TextoBuscaNews id=TextoBuscaNews class=InputText value="" style=width:200px></td>
+		
+		        <td><select class=smSelect name=Any id=Any size=1><option value=False>com todas as palavras</option><option value=True>com qualquer uma das palavras</option></select></td>
+		
+		       </tr>
+		       <tr>
+		        <td colspan=2><input type=submit name=Procurar id=Procurar value=" Buscar " class=InputButton> <input type=button name=Todas id=Todas value=" Ver todas " class=InputButton onclick="self.location.href='/sistema/noticias.asp?IDLoja=343'"></td>
+		       </tr>
+		     </table>
+		     </td>
+		   </tr>
+		 </form>
+		</table>
+	</div>
+	<!-- Fim - Mais Prazer Search -->
+
+<style>
+.zFMaisPrazerContentNews{width:950px;height:auto;margin:10px auto;}
+
+.zFMaisPrazerNews{width:300px;height:485px;margin:0px 0px 0px 0px;border:1px solid #eeeeee}
+
+.zFMaisPrazerNewsUL{text-align:center;list-style-type:none;}
+.zFMaisPrazerNewsUL li{display:inline-block;}
+.zFMaisPrazerNewsLI{width:300px;height:auto;margin:0px 7px 0px 7px}
+
+.zFMaisPrazerTitulo{margin:10px 10px 0px 10px;text-align:center;height:70px;line-height:21px;font-family:Arial;}
+.zFMaisPrazerTitulo h2 a{font-size:21px;color:#ff283a;font-weight:bold;text-decoration:none}
+.zFMaisPrazerTitulo a:hover{text-decoration:none}
+.zFMaisPrazerImg{margin:10px 0px 10px 0px;}
+.zFMaisPrazerDesc{margin:0px 10px 0px 10px;text-align:justify;}
+.zFMaisPrazerDesc a{font-size:15px;color:#4d4d4d;text-decoration:none;}
+.zFMaisPrazerDesc a:hover{text-decoration:none;}
+.zFMaisPrazerLeiaMais{text-align:right;width:300px;margin:5px 0px 0px -10px;}
+.zFMaisPrazerLeiaMais a{font-size:16px;color:#ff283a;font-weight:bold;text-decoration:none;}
+.zFMaisPrazerLeiaMais a:hover{text-decoration:none;}
+
+.zFMaisPrazerMaisNoticias{width:950px;text-align:right;}
+.zFMaisPrazerMaisNoticias a{font-size:20px;color:#fa143b;font-weight:bold;text-decoration:none;}
+.zFMaisPrazerMaisNoticias a:hover{text-decoration:none;}
+
+</style>
+
+	<div class="zFMaisPrazerContentNews">
+
+
+	<ul class="zFMaisPrazerNewsUL">
+		<li class="zFMaisPrazerNewsLI">
+			<!-- News 1 -->
+			<div class="zFMaisPrazerNews">
+				<div class="zFMaisPrazerTitulo">
+					<h2><a href="#" target="_self">Conheça as vantagens de usar o We-Vibe, o primeiro vibrador para casais do mundo!</a></h2>
+				</div>
+				<div class="zFMaisPrazerImg">
+					<a href="#" target="_self"><img src="<BaseLoja>images/MaisPrazer/CasalFeliz.jpg" width="280" height="230" /></a>
+				</div>
+				<div class="zFMaisPrazerDesc">
+					<a href="#" target="_self"><p>Imagine uma linha de produtos eróticos que une design sofisticado, praticidade, discrição e potência suficiente para elevar o nível de prazer de homens e mulheres simultaneamente até que atinjam o orgasmo em um gozo surreal. Parece exagero...</p></a>
+				</div>
+				<div class="zFMaisPrazerLeiaMais">
+					<a href="#" target="_self">Leia mais...</a>
+				</div>
+			</div>
+		</li>
+		<li class="zFMaisPrazerNewsLI">
+			<!-- News 2 -->
+			<div class="zFMaisPrazerNews">
+				<div class="zFMaisPrazerTitulo">
+					<h2><a href="#" target="_self">Ele já me largou umas quatro vezes, só que eu gosto dele. O que faço?</a></h2>
+				</div>
+				<div class="zFMaisPrazerImg">
+					<a href="#" target="_self"><img src="<BaseLoja>images/MaisPrazer/CasalDiscutindoNaCama.jpg" width="280" height="230" /></a>
+				</div>
+				<div class="zFMaisPrazerDesc">
+					<a href="#" target="_self"><p>Pergunta: Oi, Van. Eu saía com um homem que teve uma namorada por cinco anos. Ela largou dele assim que o traiu, e depois de um ano eu o conheci. Mas nesses oito meses ele já largou de mim umas quatro vezes; quando voltamos ele sempre me trata bem...</p></a>
+				</div>
+				<div class="zFMaisPrazerLeiaMais">
+					<a href="#" target="_self">Leia mais...</a>
+				</div>
+			</div>
+		</li>
+		<li class="zFMaisPrazerNewsLI">
+			<!-- News 3 -->
+			<div class="zFMaisPrazerNews">
+				<div class="zFMaisPrazerTitulo">
+					<h2><a href="#" target="_self">O homem da minha vida era um fake. O que acontecia na verdade?</a></h2>
+				</div>
+				<div class="zFMaisPrazerImg">
+					<a href="#" target="_self"><img src="<BaseLoja>images/MaisPrazer/MulherNoComputador.jpg" width="280" height="230" /></a>
+				</div>
+				<div class="zFMaisPrazerDesc">
+					<a href="#" target="_self"><p>Pergunta: Van, eu conheci uma pessoa há um tempo pela internet, conversamos por meses e eu me apaixonei. Até que chegou o dia de nos conhecermos e ele não apareceu no local combinado. Quem apareceu foi a tia dele, dizendo que ela tinha espiritualidade...</p></a>
+				</div>
+				<div class="zFMaisPrazerLeiaMais">
+					<a href="#" target="_self">Leia mais...</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+<br />
+
+	<ul class="zFMaisPrazerNewsUL">
+		<li class="zFMaisPrazerNewsLI">
+			<!-- News 1 -->
+			<div class="zFMaisPrazerNews">
+				<div class="zFMaisPrazerTitulo">
+					<h2><a href="#" target="_self">Conheça as vantagens de usar o We-Vibe, o primeiro vibrador para casais do mundo!</a></h2>
+				</div>
+				<div class="zFMaisPrazerImg">
+					<a href="#" target="_self"><img src="<BaseLoja>images/MaisPrazer/CasalFeliz.jpg" width="280" height="230" /></a>
+				</div>
+				<div class="zFMaisPrazerDesc">
+					<a href="#" target="_self"><p>Imagine uma linha de produtos eróticos que une design sofisticado, praticidade, discrição e potência suficiente para elevar o nível de prazer de homens e mulheres simultaneamente até que atinjam o orgasmo em um gozo surreal. Parece exagero...</p></a>
+				</div>
+				<div class="zFMaisPrazerLeiaMais">
+					<a href="#" target="_self">Leia mais...</a>
+				</div>
+			</div>
+		</li>
+		<li class="zFMaisPrazerNewsLI">
+			<!-- News 2 -->
+			<div class="zFMaisPrazerNews">
+				<div class="zFMaisPrazerTitulo">
+					<h2><a href="#" target="_self">Ele já me largou umas quatro vezes, só que eu gosto dele. O que faço?</a></h2>
+				</div>
+				<div class="zFMaisPrazerImg">
+					<a href="#" target="_self"><img src="<BaseLoja>images/MaisPrazer/CasalDiscutindoNaCama.jpg" width="280" height="230" /></a>
+				</div>
+				<div class="zFMaisPrazerDesc">
+					<a href="#" target="_self"><p>Pergunta: Oi, Van. Eu saía com um homem que teve uma namorada por cinco anos. Ela largou dele assim que o traiu, e depois de um ano eu o conheci. Mas nesses oito meses ele já largou de mim umas quatro vezes; quando voltamos ele sempre me trata bem...</p></a>
+				</div>
+				<div class="zFMaisPrazerLeiaMais">
+					<a href="#" target="_self">Leia mais...</a>
+				</div>
+			</div>
+		</li>
+		<li class="zFMaisPrazerNewsLI">
+			<!-- News 3 -->
+			<div class="zFMaisPrazerNews">
+				<div class="zFMaisPrazerTitulo">
+					<h2><a href="#" target="_self">O homem da minha vida era um fake. O que acontecia na verdade?</a></h2>
+				</div>
+				<div class="zFMaisPrazerImg">
+					<a href="#" target="_self"><img src="<BaseLoja>images/MaisPrazer/MulherNoComputador.jpg" width="280" height="230" /></a>
+				</div>
+				<div class="zFMaisPrazerDesc">
+					<a href="#" target="_self"><p>Pergunta: Van, eu conheci uma pessoa há um tempo pela internet, conversamos por meses e eu me apaixonei. Até que chegou o dia de nos conhecermos e ele não apareceu no local combinado. Quem apareceu foi a tia dele, dizendo que ela tinha espiritualidade...</p></a>
+				</div>
+				<div class="zFMaisPrazerLeiaMais">
+					<a href="#" target="_self">Leia mais...</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+<br />
+
+	<div class="zFMaisPrazerMaisNoticias">
+	<a href="Noticias.asp?IDLoja=<IDLoja>" traget="_self">Mais Notícias...</a>
+	</div>
+
+
+
+
+	</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
