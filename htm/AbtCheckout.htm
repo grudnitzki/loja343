@@ -1,0 +1,174 @@
+<style>
+#idDivLinkContinueFC{margin-left: 400px}
+#idCheckoutFC .EstTitCheckoutFC{text-transform: uppercase; font-weight: bold; background-color: transparent; font-size: 15px; *background: url(<BaseLoja>images/OneStepChk.png) no-repeat; *display: none; padding: 3px 0 0 30px}
+.top{margin-top: 20px}
+#idCheckoutFC .InputText, #idCheckoutFC .EstChkNomeCampo{font-size: 13px;}
+#idTitRegisterFC{background: url(<BaseLoja>images/OneStepChk.png) no-repeat; }
+#idTitFreightFC{background: url(<BaseLoja>images/TwoStepChk.png) no-repeat; }
+#idTitPaymentFC {background: url(<BaseLoja>images/TreeStepChk.png) no-repeat; }
+#idTitCartFC{background: url(<BaseLoja>images/FourStepChk.png) no-repeat; }
+.EstTabPayment, #idImgPagto1FC{padding:2px; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; border: 1px solid #CCCCCC;}
+#idImgPagto1FC{padding:2px; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;}
+#idCheckoutFC .EstChkTabTopo{text-transform: uppercase; background-color: transparent; font-size: 13px; color: #9e9c9c}
+.EstChkDiv{border: none; margin-top: 1px}	
+#idTitRegisterFC, #idTitFreightFC, #idTitCartFC{ margin-top: 5px}	
+.fc-chk-bg{ background: url(<BaseLoja>images/BgChk.png) no-repeat; *border-top: 1px solid #ff283a;}
+#idChkFreightIntFC, #idChkRegisterIntFC, #idChkCartIntFC{ background-color: transparent;}
+#idCheckoutFC #idTxtLinkContinueFC{padding: 8px; }
+
+.t { display: none}
+.os_frete { color:#333; font-size:13px; padding-top:0px; border-top:1px solid #e2e2e2; width:98%; margin-left:4px; height: 168px }
+.os_frete img{display: none}
+.os_pagamento { width:275px; margin-left:15px; padding:12px 0; clear:both; float:none}
+.os_pagamento .p1 { float: left; width:261px}
+.os_pagamento .p2 { float: left; width:261px; margin-top: 10px}
+
+
+.InputText, .smSelect { padding:2px; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; border: 1px solid #CCCCCC; line-height:20px; background: none;height:20px}
+</style>
+<script src="jquery-1.10.1.min.js"></script>
+<script src="jquery-ui-1.10.3.custom.min.js"></script>
+<script src="<BaseLoja>htm/js/JavaScriptUtil.js"></script>
+<script src="<BaseLoja>htm/js/Parsers.js"></script>
+<script src="<BaseLoja>htm/js/InputMask.js"></script>
+<script src="<BaseLoja>htm/js/bootstrap_popover.js"></script>
+<script>
+document.location.href="/recalcula.asp?idloja=<idloja>&comprar=1";
+</script>
+<table align="center">
+	<tr>
+		<td><Login></td>
+	</tr>
+</table>
+<table cellpadding="0" cellspacing="3" align="center">
+	<tr>
+		<td id="idChkTopFC" colspan="3">
+			<table cellspacing="0" cellpadding="0" align="right">
+				<tr>
+					<td>
+						<div id="idChkOrderConfirmationFloat"><OrderConfirmation></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+<tr>
+	<table class="fc-chk-bg">
+		<tr>
+			<td id="idChkCol1FC" valign="top"><Register></td>
+				<td id="idChkCol2FC" valign="top">
+					<span id="idChkIniCol2FC"></span>
+					<div id="idChkTagsCol2FC">
+						<OrderCompletion>
+						<Freight>
+						<Payment>
+					</div>
+				</td>
+				<td id="idChkCol3FC" valign="top"><Cart></td>
+			</tr>
+		</table>
+	</tr>
+	<tr>
+		<td id="idChkBottomFC" colspan="3"></td>
+	</tr>
+</table>
+
+<script>
+//jQuery("#fc-teste").popover({ title: 'Look!  A bird image!', content: "oi"});
+
+	
+</script>
+<script>
+var oChkLoginFC=document.getElementById("idChkLoginFC");
+var oChkRegisterFC=document.getElementById("idChkRegisterFC");
+var oChkCartFC=document.getElementById("idChkCartFC");
+var oChkFreightFC=document.getElementById("idChkFreightFC");
+var oChkPaymentFC=document.getElementById("idChkPaymentFC");
+var ErrInvalidPassword=13;
+
+
+function FuncChkRegisterBegin(){
+  FuncChkHide(oChkRegisterFC);
+  FuncChkCartBegin();
+  FuncChkFreightBegin();
+  FuncChkPaymentBegin();
+}
+
+function FuncChkRegisterEnd(){
+  FuncChkShow(oChkRegisterFC);
+  if(F$.iLastError==ErrInvalidPassword)jQuery(oChkLoginFC).effect("shake",{distance:10,times:3},400);
+  FuncChkCartEnd();
+  FuncChkFreightEnd();
+  FuncChkPaymentEnd();
+  
+	var oP2TelefoneMask = new InputMask("(##) ####-####", "P2Telefone");
+	var oP2PTelefoneMask = new InputMask("(##) ####-####", "P2PTelefone"); 	  
+	var oP2PCPFMask = new InputMask("###.###.###-##", "P2CPF"); 	  
+	var oP2PCepMask = new InputMask("#####-###", "P2CEP"); 	  
+	var oP2PDataNascMask = new InputMask("##/##/####", "P2DataNasc"); 	  
+	
+	
+	jQuery("#P2Celular").focus(function(){
+		var oEstadoValue = jQuery("#P2Estado").val();
+
+		if (oEstadoValue == "SP"){
+			var oP2CelularMask = new InputMask("(##) #####-####", "P2Celular");
+	  }else{
+			var oP2CelularMask = new InputMask("(##) ####-####", "P2Celular");	
+	  }
+
+	}); 
+	
+
+
+}
+
+function FuncChkCartBegin(){FuncChkHide(oChkCartFC);}
+function FuncChkCartEnd(){FuncChkShow(oChkCartFC);}
+
+function FuncChkFreightBegin(){FuncChkHide(oChkFreightFC);}
+function FuncChkFreightEnd(){FuncChkShow(oChkFreightFC);}
+
+function FuncChkPaymentBegin(){FuncChkHide(oChkPaymentFC);}
+function FuncChkPaymentEnd(){FuncChkShow(oChkPaymentFC);}
+
+function FuncChkShow(oObj){
+  if(F$.OldIE){oObj.style.display="";}
+  else{
+    sID=oObj.id;
+    if(sID.indexOf('ErrFieldFreight')>=0 || sID.indexOf('ErrFieldPayment')>=0)jQuery(oObj).show(1000);
+    else if(sID.indexOf('Waiting')>=0)jQuery(oObj).fadeIn(100);
+    else if(sID=="idCartItemsFC")jQuery(oObj).show(1500);
+    else if(sID=="idChkRegisterIntFC" || sID=="idChkCartIntFC")jQuery(oObj).slideDown("slow");
+    //else jQuery(oObj).show(500);
+    //else jQuery(oObj).effect("slide",{},"slow");
+    else jQuery(oObj).toggle("blind",{},"slow");
+  }
+}
+
+function FuncChkHide(oObj){
+  if(F$.OldIE){oObj.style.display="none";}
+  else{
+    sID=oObj.id;
+    if(sID.indexOf('Waiting')>=0)jQuery(oObj).fadeOut(200);
+    //else if(sID=="idChkCartFC" || sID=="idChkFreightFC" || sID=="idChkPaymentFC")jQuery(oObj).effect("blind",{},"slow");
+    else if(sID=="idChkCartFC" || sID=="idChkFreightFC" || sID=="idChkPaymentFC")jQuery(oObj).toggle("blind");
+    else jQuery(oObj).hide(200);
+  }
+}
+
+function FuncChkIntoView(oObjIntoView){
+  jQuery('html,body').animate({scrollTop: jQuery(oObjIntoView).offset().top},500);
+  //oObj.scrollIntoView();
+}
+
+function isScrolledIntoView(elem){
+  var docViewTop = $(window).scrollTop();
+  var docViewBottom = docViewTop + $(window).height();
+  var elemTop = $(elem).offset().top;
+  //alert(elemTop +" "+ elem.id);
+  var elemBottom = elemTop + $(elem).height();
+  return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+</script>
