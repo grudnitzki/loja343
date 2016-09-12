@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<TITLE>Loja do Prazer - Internet</TITLE>
+</HEAD>
+<SCRIPT>
+<!-- Hide from old browsers
+var FormType = "Update";
+var NextField = "P_COD_FIN";
+function JSLNotNull(pctl, pmsg){
+   if (pctl.value == "") { alert(pmsg); pctl.focus(); return false; }
+   return true;
+}
+function JSLMakeUpper(pctl) {
+   pctl.value = pctl.value.toUpperCase();
+}
+function BT_PAGE_OnClick(ctl) {
+   document.forms[0].Z_ACTION.value = ctl.value;
+   document.forms[0].submit();
+   return true;
+}
+function seta_focus(local) {
+	if (window.event.keycode == 13) {
+		if ( local == "P_COD_INI" ) NextField = "P_COD_FIN";
+		if ( local == "P_COD_FIN" ) NextField = "done";
+		eval("document.forms[0]." + NextField + ".focus()");
+	}
+}
+function verfonte() {
+	if (event.button==2) {
+		window.alert("Não Disponível!");
+	}
+}
+document.onmousedown=verfonte
+//-->
+</SCRIPT>
+<BODY BGCOLOR="FFFFCC" TEXT="0000FF" LINK="000000"VLINK="800040" ALINK="0FF000">
+<FORM ACTION="http://websro.correios.com.br/sro_bin/txect01$.QueryList" METHOD="POST"  NAME = SROForm>
+<INPUT TYPE="hidden" NAME="P_ITEMCODE" VALUE="">
+<INPUT TYPE="hidden" NAME="P_LINGUA" VALUE="001">
+<INPUT TYPE="hidden" NAME="P_TESTE" VALUE="">
+<INPUT TYPE="hidden" NAME="P_TIPO" VALUE="001">
+<FONT face=Arial size=3 color=red><b>Pesquisar Um Objeto</b></font>
+<br><br><font face=Arial color=black size=2>Para buscar informações sobre o seu objeto, digite o identificador do objeto no campo abaixo, conforme instruções.<br>
+
+<TABLE>
+<TR VALIGN="TOP">
+<TD ALIGN="RIGHT"><FONT COLOR="Black"><B>Identificador do Objeto: </B></TD>
+<TD ALIGN="LEFT"><INPUT TYPE="text" NAME="P_COD_UNI" SIZE="13" MAXLENGTH="13"></TD></TR>
+<TR VALIGN="TOP"><TD ALIGN="RIGHT"> </TD><TD ALIGN="LEFT"><FONT COLOR="Black" FACE="Times New Roman" SIZE="2"></font><font face=Arial size=2 color=black>Entre com as 13 posições do identificador do objeto, por ex: <b>SS123456789BR</b>. </font></TD></TR>
+</TABLE>
+<CENTER>
+<input type=hidden name="Z_ACTION">
+<input type=button name="done" value="Pesquisar" onClick="BT_PAGE_OnClick(this)">
+</FORM>
+</CENTER>
+<script type="text/javascript" src=" http://busca.lojadoprazer.com.br/scripts/integracao/e-commercesearch.js"></script></BODY>
+</HTML>
