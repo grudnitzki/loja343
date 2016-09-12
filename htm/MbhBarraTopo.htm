@@ -1,0 +1,121 @@
+
+<script type="text/javascript">
+// var globais
+var pdet  = "";
+var pdet2 = "";
+var pdet3 = "";
+var pdet4 = "";
+var exibeCart = "";
+var IDLoja='<IDLoja>';
+var IDLojaGrid='<IDLoja>'; 
+var IDLojaNum='<IDLojaNum>';
+var sCaminhoImagens='<BaseLoja>'+'images/';
+var sCaminhoImages='<BaseLoja>images/';
+var sCaminhoProds='<BaseLoja>'+'prod/';
+var IDLojaAS='<IDLoja>';
+var CaminhoProdAS='<BaseLoja>prod/';
+var sCaminhoImages='<BaseLoja>images/'; 
+var sPag=document.location.href.toUpperCase();
+
+</script>
+<script language="JavaScript" src="<BaseLoja>htm/MbhLojaLib.js"></script>
+<!-- Slideshow -->
+<script language="JavaScript" src="/jquery-1.8.2.min.js"></script>
+<script language="JavaScript" src="http://jquery-accordion.googlecode.com/svn/trunk/jquery.accordion.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/Mbhnivo_slider.js"></script>
+<script type="text/javascript" src="/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="<Baseloja>htm/js/jquery_cookie.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/JurosParcelas.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/MbhFormAjust.js"></script>
+
+<link rel="stylesheet" href="<BaseLoja>htm/Mbhnivo.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<BaseLoja>htm/Mbhnivo_slider.css" type="text/css" media="screen"/>
+
+
+
+<script type="text/javascript">
+  jQuery.noConflict();
+    jQuery(window).load(function() {
+      jQuery('#slider').nivoSlider({
+    });
+  });
+</script>
+<script type="text/javascript"> 
+
+function readCart(){   
+   
+		jQuery(function (xml) {
+		  jQuery.ajax({
+			type: "GET",
+			//url: "sites.xml",
+      url: "XMLCart.asp?idloja="+IDLoja,				
+			dataType: "xml",
+			success: 		function parseXml (xml) {
+						  jQuery(xml).find('cart').each(function() {
+								var subtotal = jQuery(this).find('subtotal').text();
+								var currency = jQuery(this).find('currency').text();
+								//var TotalWeight = jQuery(this).find('TotalWeight').text();
+								//var WeightUnit = jQuery(this).find('WeightUnit').text();
+								var TotalQty = jQuery(this).find('TotalQty').text();
+
+								var ValCesta=subtotal.replace(".","").replace(",",".");
+
+								if(subtotal <= 0.00){
+									jQuery("#fc-carrinho-preco").text("0 Itens");
+								}else{
+									jQuery("#fc-carrinho-preco").html(subtotal);		
+								}
+								
+						    var sItem = '';
+						    if (TotalQty >1){sItem = 'Itens: ';}else {sItem = 'Item: ';}
+						
+								if(TotalQty <= 0){
+									jQuery("#fc-carrinho-itens").text("");
+								}else{
+									jQuery("#fc-carrinho-itens").text(sItem+TotalQty);		
+								}		
+		
+						  });
+		}
+				  });
+				});
+}
+	
+	
+	
+</script>
+<!-- Logo / Shopping cart -->
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td style="background: #FF283A; height:5px"></td>
+		<td style="background: #FF283A; height:5px"></td>
+	</tr>
+	<tr>
+		<td><a href="home.asp?idloja=<IDLoja>"><img src="<BaseLoja>images/LogoTopo.png" width="130" height="65" border="0" alt="<NomeLoja>" /></a></td>
+		<td id="fc-carrinho">
+			<table width="100%" cellpadding="0" cellspacing="0">
+				<tr><td id="fc-carrinho-txt"><a href="AddProduto.asp?IDLoja=<IDLoja>">MEU CARRINHO</a></td></tr>
+				<tr><td id="fc-carrinho-preco"></td></tr>
+				<tr><td id="fc-carrinho-itens"></td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<!-- Search -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" id="fc-busca">
+	<form name="buscaprod" method="GET" action="listaProdutos.asp?IDLoja=<IDLoja>" onSubmit="return VerTexto(this)">
+		<tr>
+			<td align="center">
+	                        <input type="text" class="InputTextSearch" value="<SearchText>" onclick="if(this.value=='O QUE VOCÊ PROCURA?')this.value=''" name="Texto" id="TextoBusca" maxlength="70" style="width:97%;height:33px;">
+	                        <input type="hidden" name="IDLoja" value="<IDLojaNum>"><input type="hidden" name="Digitada" value="True">
+                        </td>
+			<td align="center" width="61">
+                        	<input type="image" name="ok" src="<BaseLoja>images/MbbBotSearch.png" width="61" height="33" style="margin-right:10px" />
+			</td>
+		</tr>
+	</form>
+</table>
+<script type="text/javascript">
+oTextoBusca=document.getElementById("TextoBusca");
+if(oTextoBusca.value=="")oTextoBusca.value="O QUE VOCÊ PROCURA?";
+</script>
