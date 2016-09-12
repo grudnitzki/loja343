@@ -1,0 +1,51 @@
+
+
+body { background: #fbf1f1; margin: 0; padding: 0; }
+
+img  { border: none; }
+
+/* Cor do texto da tabela interno */
+a       { color: #e56771; text-decoration: none; }
+a:hover { color: #000; text-decoration: none; }
+
+
+
+/* departamentos */
+#departamento    { width: 190px; margin: 0px 0px 0px 0px; padding: 0px; display: table; overflow: hidden; }
+#acessar    { margin: 0px; padding: 0px; list-style: none; }
+#departamento ul,
+#acessar ul { margin: 0px; padding: 0px; }
+.departamento_lr { width: 188px; border-width: 0px 0px 1px 0px; border-style: solid; border-color: #ef9ba0; }
+
+
+/* cor e tamanho do texto DEPARTAMENTOS */
+.head            { width: 178px; height: 25px; margin: 0px 0px 0px 0px; padding: 5px 0px 0px 10px; font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; font-size: 11pt; color: #ffffff; text-decoration:none; font-weight:bold; background: url('../images/barra_vermelha.jpg') repeat-x; }
+.menu            { }
+
+
+/* cor e tamanho das categorias EXTERNAS */
+.menu_externo       { width: 179px; height: 25px; margin: 0px 0px 0px 0px; padding: 4px 10px 0px 10px; font-size: 8pt; font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; text-decoration:none; font-weight:none; color: #e56771; display: block; cursor: pointer; overflow: hidden; }
+
+/* tamanho da categoria EXTERNA */
+.menu_externo:hover,
+.menu_externo a:hover { width: 167px; height: 21px; margin: 0px 0px 0px 0px; background-color: #af251c; color: #fce0e0; }
+
+.menu_interno      { }
+
+
+.menu   {  background: #fbf1f1;}
+
+/* Fonte do menu externo */
+.seta {   font-size: 8pt; font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; text-decoration:none; font-weight:none; background: #f2f2f2; height: 25px; border-width: 1px 1px 0px 1px; border-style: solid; border-color: #ef9ba0; background: url('../images/maior.gif') right top no-repeat; }
+
+/* Fonte do menu externo */
+.sem_seta { font-size: 8pt; font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; text-decoration:none; font-weight:none; background: #fbf1f1; height: 25px; border-width: 1px 1px 0px 1px; border-style: solid; border-color: #ef9ba0;}
+
+.interno { width: 230px; margin: 0px; padding: 5px; margin: -26px 0px 0px 187px !important; border-width: 1px 1px 0px 1px; border-style: solid; border-color: #ef9ba0; background-color: #fff; }
+.interno {  font-size: 8pt; font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; text-decoration:none; font-weight:none; color: #4a294b; text-align: left; z-index: 100; display: none; position: absolute; white-space: nowrap; }
+
+.interno li { width: 100%; height: 25px; list-style: none; border-bottom: 1px solid #ef9ba0; background: #fbf1f1; color: #454445; }
+
+/* Tamanho da fonte do menu interno */
+.interno a       { height: 20px; padding: 5px 4px 0px 4px; font-size: 8pt; font-family:Verdana,Geneva,Arial,Helvetica,sans-serif; text-decoration:none; font-weight:none; display: block; overflow: hidden; }
+.interno a:hover { color: #fbf1f1; text-decoration: none; background-color: #af251c; }
