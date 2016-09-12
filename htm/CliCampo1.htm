@@ -1,0 +1,18 @@
+<input class="InputText" type="text" name="P2CliCampo1" id="P2CliCampo1" value="" maxlength="100" onchange="F$.fnCleanErrField('P2CliCampo1');" style="display: none;">
+
+<script>
+function CliValidaCampo1(){
+var retorno=true;
+  oNasc=F$.GetID("P2DataNasc");
+  //oSexo=F$.GetID("P2SexoFeminino");
+  if(oNasc.value==""){
+    //var oNewElement=document.createElement("div");
+    //oDivElement=oSexo.parentNode.insertBefore(oNewElement,oSexo);
+    //oDivElement.innerHTML="<div id=idErrFieldP2DataNascFC style=display:none class=EstErrField><span id=idTxtErrFieldP2DataNascFC class=EstTxtErrField></span></div>";
+    F$.fnShowErrField(P2DataNasc,"Informe a data de nascimento");
+    oNasc.focus();
+    retorno=false;
+    }
+    return retorno;
+  }
+</script>
