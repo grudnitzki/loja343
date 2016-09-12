@@ -1,0 +1,736 @@
+<link type="text/css" rel="stylesheet" href="<Baseloja>htm/layout.css" media="all">
+<link type="text/css" rel="stylesheet" href="<BaseLoja>htm/jquery_ui.css" media="all"> 
+<!--[if IE]> 
+<style type="text/css">
+.os_eDepartamentos ul li a { display:inline !important; padding:0 0 0 17px !important; line-height:18px}
+.os_eNewsletter {background:url(../lojas/000<IDLoja>/images/layout/bgNewsIE.gif) no-repeat}
+.os_tCategorias {overflow:hidden}
+.os_navCat ul li.pai a.pai {font-size:12px !important;}
+.os_navCat ul.mega-menu li .sub li.mega-hdr li.seta a {font-size:12px !important;}
+.ui-autocomplete-category{margin-top: -2px}
+#fc-cart-topo-container {height:300px;}
+#fc-cart-topo-container td{font-size: 11px; margin:0}
+#fc-cart-topo-container a{font-size: 11px;}
+#fc-cart-topo-container a:hover{font-size: 11px;}
+</style>
+<![endif]-->
+
+<script type="text/javascript" src="/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="<Baseloja>htm/js/ldp_all.js"></script>
+<script type="text/javascript" src="<Baseloja>htm/js/jquery_cookie.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/JurosParcelas.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/LojaLib.js"></script>
+
+<script type="text/javascript">
+// var globais
+var pdet  = "";
+var pdet2 = "";
+var pdet3 = "";
+var pdet4 = "";
+var exibeCart = "";
+var IDLoja='<IDLoja>';
+var IDLojaGrid='<IDLoja>'; 
+var IDLojaNum='<IDLojaNum>';
+var sCaminhoImagens='<BaseLoja>'+'images/';
+var sCaminhoImages='<BaseLoja>images/'; 
+var sCaminhoProds='<BaseLoja>'+'prod/';
+var IDLojaAS='<IDLoja>';
+var CaminhoProdAS='<BaseLoja>prod/';
+var sPag=document.location.href.toUpperCase(); 
+var g1='3'; //Quantidade de itens do grupo g1(Termos), PadrÃƒÂ£o 5, MÃƒÂ¡ximo 9, 0 NÃƒÂ£o exibe
+var g2='3'; //Quantidade de itens do grupo g2(PÃƒÂ¡ginas), PadrÃƒÂ£o 3, MÃƒÂ¡ximo 9, 0 NÃƒÂ£o exibe
+var g3='3'; //Quantidade de itens do grupo g3(Produtos), PadrÃƒÂ£o 5, MÃƒÂ¡ximo 9, 0 NÃƒÂ£o exibe
+var g4='3'; //Quantidade de itens do grupo g4(NotÃƒÂ­cias), PadrÃƒÂ£o 3, MÃƒÂ¡ximo 9, 0 NÃƒÂ£o exibe
+</script>
+
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function(jQuery){
+	jQuery('#mega-menu').dcMegaMenu({
+		rowItems: '5',
+		speed: 'fast',
+		effect: 'fade'
+	});
+});
+</script>
+
+<script type="text/javascript">
+// palavra digitada
+function aoiniciar() {
+  var edigitada = "";
+  var pdigitada = "<SearchText>"
+  
+
+  if (pdigitada == "") {
+    document.fBusca.Texto.value = "Digite aqui o que procura";
+  }
+  else {
+    document.fBusca.Texto.value = "<SearchText>";
+    //document.fBusca.Texto.value = pdigitada;
+
+  }
+}
+window.onload = aoiniciar;
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+jQuery(".os_tCategorias").addClass("apos_load");
+});
+</script>
+
+<script type="text/javascript">
+function MostraChatLoja()
+  {
+  popup=window.open("http://www.rumo.com.br/sistema/ChatLogin.asp?IDLoja=<IDLoja>","Chat","top=20,left=20,height=280,width=390,scrollbars=no,resizable=yes");
+  popup.focus();
+  return void(0);
+  }
+</script>
+
+<script type="text/javascript">
+// palavra digitada
+function aoiniciar() {
+  var edigitada = "";
+  var pdigitada = "<SearchText>";
+  if (pdigitada == "") {
+    document.fBusca.Texto.value = "Digite aqui o que procura";
+    //document.fc-form-search.Texto.value = "Digite aqui o que procura";
+  }
+  else {
+    document.fBusca.Texto.value = "<SearchText>";
+    //document.fc-form-search.Texto.value = "<SearchText>";
+  }
+}
+window.onload = aoiniciar;
+</script>
+
+<script type="text/javascript">
+function readCart(){   
+   
+		jQuery(function (xml) {
+		  jQuery.ajax({
+			type: "GET",
+			//url: "sites.xml",
+      url: "XMLCart.asp?idloja="+IDLoja,				
+			dataType: "xml",
+			success: 		function parseXml (xml) {
+						  jQuery(xml).find('cart').each(function() {
+								var subtotal = jQuery(this).find('subtotal').text();
+								var currency = jQuery(this).find('currency').text();
+								//var TotalWeight = jQuery(this).find('TotalWeight').text();
+								//var WeightUnit = jQuery(this).find('WeightUnit').text();
+								var TotalQty = jQuery(this).find('TotalQty').text();
+
+								var ValCesta=subtotal.replace(".","").replace(",",".");
+
+						  
+				        var sItem = '';
+				        if (TotalQty >1){sItem = 'Itens';}else {sItem = 'Item';}
+		
+								if(TotalQty == 0){
+									jQuery('#fc-cart-data').html('<p>Carrinho vazio</p>');
+									jQuery('img#fc-cart-controler').hide();
+								}else{
+								
+								
+				  jQuery(".os_tCesta").mouseover(function () {
+							jQuery('#fc-cart-topo-container').slideDown();
+							//jQuery('#fc-cart-controler').attr('src', sCaminhoImagens+'/open.png');		
+					});
+					jQuery("#fc-cart-topo-container").mouseleave(function () {
+							jQuery('#fc-cart-topo-container').slideUp();
+							//jQuery('#fc-cart-controler').attr('src', sCaminhoImagens+'/close.png');										
+					});
+								
+								
+								
+											jQuery('#fc-cart-data').html('<a href="AddProduto.asp?IDLoja='+IDLoja+'"><p>'+sItem+':&nbsp;'+TotalQty+'&nbsp;-&nbsp;Subtotal:&nbsp;'+currency+'&nbsp;'+subtotal+'</p></a>');
+								
+															
+								  jQuery(xml).find('item').each(function() {
+										var image = jQuery(this).find('image').text();
+										var prod = jQuery(this).find('prod').text();
+										var qty = jQuery(this).find('qty').text();
+										var price = jQuery(this).find('price').text();
+										//var weight = jQuery(this).find('weight').text();
+										var id = jQuery(this).find('id').text();												
+										var etc=''
+										var freeShipping= 199;
+								    var subtotalBasket = subtotal.replace(".", "").replace(",", ".");
+								    var shipping = freeShipping - subtotalBasket;										
+																				
+										if (prod.length >= 45){
+											etc='...'
+											}else{
+												etc=''
+											}
+											
+										if ( shipping <= 0){
+											jQuery("#fc-shipping").html("<div id='fc-shipping-free'>Parabéns, você já está ganhando frete&nbsp;</div><div id='fc-shipping-gratis'>Grátis</div>");									
+											jQuery("#fc-shipping").css("padding","0px");									
+										}else{
+											//jQuery("#fc-shipping").html("<p>"+FormatPrecoReais(shipping)+"</p>");									
+											//<p>Faltam R$ </p><p>&nbsp;199,00&nbsp;</p><p> para você ganhar</p><span>frete GRÁTIS</span>
+											jQuery("#fc-shipping").html("<p>Faltam </p><p style='color: #FEEDBA'>&nbsp;"+FormatPrecoReais(shipping)+"&nbsp;</p><p>para você ganhar</p><span>frete&nbsp;</span><span style='color: #FEEDBA'>GRÁTIS</span>");									
+										}	
+
+											jQuery('img#fc-cart-controler').show();					
+/*											jQuery("#fc-cart-container ul,#fc-cart-topo-container ul").append("<li><p><a href='/prod,idloja,"+IDLoja+",idproduto,"+id+","+prod+"'><img src='"+image+"'width='30' height='30' style='border: 1px solid #FF283A'/></a></p><p style='width:167px'><a href='/prod,idloja,"+IDLoja+",idproduto,"+id+","+prod+"'>"+prod.substring(0,60)+etc+"</a></p><p id='qty'>("+qty+")</p><p style='font-weight:bold;width:59px'>R$&nbsp;"+price+"</p></li>");
+											jQuery("#fc-cart-parc,#fc-cart-topo-parc").html("<div>"+MontaMaxParcelaCart(ValCesta)+"</div><div><a href='AddProduto.asp?IDLoja="+IDLoja+"'><img src='<BaseLoja>images/layout/comprar_toolbar.png' width='200' height='30'/></a></div>");*/
+											
+											jQuery("#fc-cart-container table,#fc-cart-topo-container table").append("<tr><td><a href='/prod,idloja,"+IDLoja+",idproduto,"+id+","+prod+"'><img src='"+image+"'width='30' height='30' style='border: 1px solid #FF283A'/></a></td><td style='width:160px'><a href='/prod,idloja,"+IDLoja+",idproduto,"+id+","+prod+"'>"+prod.substring(0,45)+etc+"</a></td><td id='qty'>("+qty+")</td><td style='font-weight:bold;width:59px'>R$&nbsp;"+price+"</td></tr>");
+											jQuery("#fc-cart-parc,#fc-cart-topo-parc").html("<div>"+MontaMaxParcelaCart(ValCesta)+"</div><p><a href='AddProduto.asp?IDLoja="+IDLoja+"'><img src='<BaseLoja>images/layout/comprar_toolbar.png' width='200' height='30'/></a></		p>");									
+											
+											
+											
+								  });
+								}
+		
+						  });
+		}
+			
+								
+				  });
+				});
+				
+
+
+}
+		
+		function updateCart(){
+	      jQuery("#fc-cart-container table,#fc-cart-topo-container table").empty();		    					
+				jQuery('#fc-cart,#fc-cart-container').animate({ backgroundColor: '#feedba' }, 'slow');
+				setTimeout(function() {
+					jQuery('#fc-cart,#fc-cart-container').animate({ backgroundColor: 'white' }, 'slow');
+				}, 2000);		      
+		}
+		
+					
+
+jQuery(document).ready(function(){
+		   	
+	    var cookieHeightName = 'Height';
+	    var height = jQuery.cookie(cookieHeightName);   
+
+	    var cookieSrcName = 'Src';
+	    var src = jQuery.cookie(cookieSrcName);   
+
+	    var cookieMarginTopName = 'marginTop';
+	    var marginTop = jQuery.cookie(cookieMarginTopName);	    
+
+	    var cookieHideShowName = 'hideShow';
+	    var hideShow = jQuery.cookie(cookieHideShowName);	 
+
+
+
+   jQuery(window).scroll(function activateToolbar(){
+
+   	var scrollTop = jQuery(window).scrollTop();
+		var height = jQuery(".fc-toolbar-show-hide").height();
+		var url = location.pathname;
+		var urlHide = "/addproduto.asp";
+		
+
+      
+
+     if ( scrollTop > height && url != urlHide){
+         jQuery('#fc-toolbar').stop().animate({opacity: 1}).show();
+         //jQuery('.ui-menu .ui-menu-item a').css('width','500px');
+         jQuery('.ui-autocomplete').hide();
+                           
+         var height = jQuery.cookie(cookieHeightName);   
+         var src = jQuery.cookie(cookieSrcName); 
+         var marginTop = jQuery.cookie(cookieMarginTopName);	    
+         var hideShow = jQuery.cookie(cookieHideShowName);	 
+         
+         jQuery('#fc-toolbar').css({'height': height});
+
+         if(jQuery.cookie("Src")) {
+	         jQuery('#fc-controler img').attr('src', '<BaseLoja>images/'+src);
+         }
+
+         jQuery('#fc-controler').css('margin-top', marginTop);			         			
+         jQuery('#fc-sep,#fc-logo,#fc-search,#fc-cart').css('display', hideShow);			
+         
+         
+         } else {
+         jQuery('#fc-toolbar').stop().animate({opacity: 0.4}).hide();
+      }
+      
+      if ( scrollTop > 0){
+         jQuery('#fc-cart-topo-container').hide();         
+      }
+   });
+
+
+
+	jQuery("a#fc-controler").click(function hideShowToolbar ( event ) {
+		event.preventDefault();
+		
+		var heightToolbar = jQuery("#fc-toolbar").height();
+		var closeSrc = '<BaseLoja>images/close.png';
+		var openSrc = '<BaseLoja>images/open.png';
+
+		if (heightToolbar > 15){		
+			var height = '4';
+			var src = 'open.png';		
+			var marginTop = -9;		
+			var hideShow = 'none';
+			jQuery('#fc-toolbar').animate({height: height}, 'slow');
+      jQuery('#fc-controler').animate({marginTop: marginTop}, 'slow');			         						 
+			jQuery('img[src="'+closeSrc+'"]').attr('src', '<BaseLoja>images/'+src);			
+			jQuery('#fc-sep,#fc-logo,#fc-search,#fc-cart').hide();	
+			jQuery.cookie(cookieHeightName, height);
+			jQuery.cookie(cookieSrcName, src);
+			jQuery.cookie(cookieMarginTopName, marginTop);
+			jQuery.cookie(cookieHideShowName, hideShow);
+
+		}else{
+			var height = '60';		
+			var src = 'close.png';		
+			var marginTop = 0;					
+			var hideShow = 'block';			
+			jQuery('#fc-toolbar').animate({height: height}, 'slow');
+      jQuery('#fc-controler').animate({marginTop: marginTop}, 'slow');			         						 						
+			jQuery('img[src="'+openSrc+'"]').attr('src', '<BaseLoja>images/'+src);			
+			jQuery('#fc-sep,#fc-logo,#fc-search,#fc-cart').show();			
+			jQuery.cookie(cookieHeightName, height);
+			jQuery.cookie(cookieSrcName, src);
+			jQuery.cookie(cookieMarginTopName, marginTop);
+			jQuery.cookie(cookieHideShowName, hideShow);
+		}
+	});   
+
+
+
+				  jQuery("#fc-cart-controler").mouseover(function () {
+							jQuery('#fc-cart-container').slideDown();
+							jQuery('#fc-cart-controler').attr('src', sCaminhoImagens+'/open.png');		
+							//jQuery("#fc-cart-container").mouseenter(function(){clearTimeout(setTime);});
+							//var setTime = setTimeout('jQuery("#fc-cart-container").slideUp()', 2000);								
+					});
+					jQuery("#fc-cart-container").mouseleave(function () {
+							jQuery('#fc-cart-container').slideUp();
+							jQuery('#fc-cart-controler').attr('src', sCaminhoImagens+'/close.png');										
+					});
+
+
+});
+
+
+</script> 
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery().UItoTop({ easingType: 'easeOutQuart' });
+	});
+</script>
+
+<script type="text/javascript">
+// jquery marcas cycle
+jQuery(function() {
+  jQuery("#os_marcas").cycle({  
+    fx: 'scrollHorz',
+	speed: 600,
+	timeout: 0,
+    autostop: true,
+	prev : '.prev_marca',
+    next : '.next_marca'
+  });
+});
+</script>
+
+
+
+<!--Toolbar-->
+<div id="fc-toolbar" style="display:none;" class="shadow">
+	<a id="fc-controler" href="#"><img src="<BaseLoja>images/close.png" width="25" height="25" /></a>
+	<div id="fc-sep"></div>
+	<div id="blocoCentralizado">
+		<div id="bloco1">
+				<a id="fc-logo" href="home.asp?IDLoja=<IDLoja>"><img src="<BaseLoja>images/logo.jpg" width="120" height="60" /></a>
+		</div>
+
+		<div id="bloco2">
+			<div id="fc-search">
+			  <form name="fc-form-search" id="autocomplete-form-toolbar" method="GET" action="ListaProdutos.asp?IDLoja=<IDLoja>">
+			    <input type="hidden" name="IDLoja" value="<IDLoja>">
+			    <input type="hidden" name="Digitada" value="True">
+			    <input name="Texto" type="text" title="Digite a palavra desejada" id="autocomplete-toolbar" accesskey="0" class="fc-search-campo"  value="" onfocus="if (this.value == 'Digite aqui o que procura') {this.value='';}" onblur="if (this.value == '') {this.value='Digite aqui o que procura';}" />
+			    <input type="submit" name="ok" value="" class="fc-search-bot">
+			  </form>
+			  <div id="fc-shipping"><p>Faltam </p><p style='color: #FEEDBA'>&nbsp;R$ 199,00&nbsp;</p><p> para você ganhar</p><span>frete&nbsp;</span><span style='color: #FEEDBA'>GRÁTIS</span></div>
+			</div>			
+		</div>
+
+		<div id="bloco3">
+			<div id="fc-cart">
+				<img id="fc-cart-controler" src="<BaseLoja>images/close.png" width="25" height="25" />
+				<div id="fc-cart-data"></div>
+				<div id="fc-cart-container" style="display:none">
+					<table></table>
+					<div id='fc-cart-parc'><br /></div>
+				</div>
+			</div>				
+		</div>		
+	
+	</div>
+</div>
+
+
+
+
+<div class="os_topo" id="topoPed">
+  <div class="os_tBar fc-toolbar-show-hide">
+    <!--logo-->
+    <h1><a href="http://www.lojadoprazer.com.br">Loja do Prazer</a></h1>
+    <!--busca-->
+    <div class="os_tBusca">
+      <form name="fBusca" id="autocomplete-form" method="GET" action="ListaProdutos.asp?IDLoja=<IDLoja>">
+        <input type="hidden" name="IDLoja" value="<IDLoja>">
+        <input type="hidden" name="Digitada" value="True">
+        <input name="Texto" type="text" title="Digite a palavra desejada" id="autocomplete" accesskey="0" class="os_bCampo"  value="" onfocus="if (this.value == 'Digite aqui o que procura') {this.value='';}" onblur="if (this.value == '') {this.value='Digite aqui o que procura';}" />
+        <input type="submit" name="ok" value="" class="os_bBotao">
+      </form>
+    </div>
+    <!--busca avancada-->
+    <div class="os_tAvancada"><a href="/buscaavancada.asp?idloja=<IDLoja>">busca avan&ccedil;ada</a></div>
+    <!--banner1-->    
+    <div class="os_tBanner1"><a href="http://www.lojadoprazer.com.br/sistema/FaleConosco.asp?IDLoja=343"><img src="<BaseLoja>images/layout/banner/privacidade.png" width="557" height="43" alt="Compra segura, embalagem discreta e privacidade garantida" /></a></div>
+    <!--cesta-->
+    <div class="os_tCesta">
+    
+    
+    <a href='/addproduto.asp?idloja=<IDLoja>' style="display:block"><span class='os_itens'>MEU CARRINHO</span><br /><span class="os_itens" id="QtdItensCesta"></span><br /><span class="os_itens" id="ValorItensCesta"></span></a></div>
+		<div id="fc-cart-topo-container" style="display:none">
+			<table></table>
+			<div id='fc-cart-topo-parc'><br /></div>
+    
+    
+    </div> 
+  
+  </div>
+  
+  <div class="os_tCategorias">
+    <div class="os_navCat">
+      <ul id="mega-menu" class="mega-menu">
+        <li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186250,acessorios-eroticos" class="pai">Acess&oacute;rios</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2065,acessorios-femininos">Acess&oacute;rios Femininos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,3736,acessorios-pompoarismo">Acess&oacute;rios Pompoarismo</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2059,aneis-penianos">An&eacute;is Penianos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,5166,bolinhas-anais">Bolinhas Anais</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,9613,capas-penianas-e-extensor">Capas Penianas e Extensores</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,181224,cilios-posticos">C&iacute;lios Posti&ccedil;os</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2062,cintas-penianas">Cintas Penianas</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2149,bombas-penianas">Desenvolvedores Penianos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,113355,duchas-higienicas">Duchas Higi&ecirc;nicas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2064,estimuladores-e-dedeiras">Estimuladores e Dedeiras</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117985,estimuladores-de-prostata">Estimuladores de Pr&oacute;stata</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,76824,livros-eroticos">Livros Er&oacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,137269,mascaras-sensuais">M&aacute;scaras Sensuais</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,11222,massageadores-eroticos">Massageadores Er&oacute;ticos</a></li>
+				<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,186284,masturbadores-masculinos">Masturbadores Masculinos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,113297,plus-anais-sem-vibro">Plugs Anal</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,35396,sandalias-eroticas">Sand&aacute;lias Er&oacute;ticas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,165018,tapa-mamilos">Tapa Mamilos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,186279,preservativos">Preservativos</a></li>                
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA ACESSORIOS-->                  
+                  <prod out="p254" id="3880834">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,186251,brincadeiras-e-jogos" class="pai">Brincadeiras</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,121850,baralhos-eroticos">Baralhos Er&oacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,99182,brincadeiras-diversas">Brincadeiras Diversas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,90856,canecas-eroticas">Canecas Er&oacute;ticas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,113301,dadinhos-eroticos">Dadinhos Er&oacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,3179,jogos-eroticos">Jogos Er&oacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,130451,revistas-eroticas-hetero">Revistas Er&oacute;ticas H&eacute;tero</a></li>
+              </ul>
+            </li>                        
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA BRINCADEIRAS-->
+                  <prod out="p254" id="3833014">
+                </li>
+              </ul>
+            </li>
+          </ul>        
+        </li>
+        <li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186252,cosmeticos" class="pai">Cosm&eacute;ticos</a>
+          <ul>
+            <li>
+              <ul>
+				<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,199514,bebida-afrodisiaca">Bebida Afrodis&iacute;aca</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117206,bolinhas-de-oleo-corporal">Bolinhas de &Oacute;leo Corporal</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,127160,comestiveis">Comest&iacute;veis</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,108992,corpo-e-banho">Corpo e Banho</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,107298,energeticos">Energ&eacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117207,excitante-unissex">Excitante Unissex</a></li>
+
+
+              </ul>
+            </li>
+            <li>
+               <ul>
+                  <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117200,gel-para-sexo-anal">Gel para Sexo Anal</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117203,gel-do-beijo">Gel do Beijo / Lâmina Bucal</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117204,gel-feminino">Gel Feminino</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117205,gel-masculino">Gel Masculino</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117201,gel-retardante">Gel Retardante</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,160266,locao-efervescente">Lo&ccedil;&atilde;o Efervescente</a></li>
+
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,130050,locao-para-massagem">Lo&ccedil;&atilde;o para Massagem</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2079,lubrificantes">Lubrificantes</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117202,gel-para-massagem-hot">Gel para Massagem HOT</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117208,gel-para-massagem-ice">Gel para Massagem ICE</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,3502,perfumes-afrodisiacos">Perfumes Afrodis&iacute;acos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,127159,velas-para-massagem">Velas para Massagem</a></li>  
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA COSMETICOS-->
+                  <prod out="p254" id="3801820">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,186253,fantasias-e-lingeries" class="pai regra2">Lingeries</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,186120,fantasias-com-peruca">Fantasias com Peruca Fem</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2110,fantasias-femininas">Fantasias Er&oacute;ticas Fem</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,126760,fantasias-masculinas">Fantasias Er&oacute;ticas Masc</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,136818,lingeries-linha-gg">Lingeries GG (Plus Size)</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,177907,baby-dolls">Baby Dolls</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,92085,biquinis-eroticos">Biquinis Er&oacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2090,bodies">Bodies</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2091,calcinhas-fio-dental">Calcinhas Fio Dental</a></li>
+				
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,179859,calcinhas-masculinas">Calcinhas Masculinas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,140821,calcas-sensuais">Cal&ccedil;as Sensuais</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,177908,camisolas">Camisolas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2094,combinetes">Combinetes e Camisetes</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2100,conjuntos-sensuais">Conjuntos Sensuais</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,120724,corselets">Corselets</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,4946,cuecas-eroticas">Cuecas Er&oacute;ticas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2099,espartilhos">Espartilhos</a></li>
+				<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,143747,luvas">Luvas</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,140608,macacoes-sensuais">Macac&otilde;es Sensuais</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,167454,meias-avulsas">Meias Avulsas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,41492,roupas-sensuais">Roupas Sensuais (Clubwear)</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,24307,saias-e-mini-shorts">Saias e Mini Shorts</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,175698,sutias">Suti&atilde;s</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,13580,vestidos-sensuais">Vestidos Sensuais</a></li>
+				<li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,justine" class="dpromolanc">Justine - Fashion Lingerie</a></li>
+				<li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,moments+uniques" class="dpromolanc">Coleção Moments Uniques</a></li>
+				<li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,vive+l+experience" class="dpromolanc">Coleção Vive L Experience</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA LINGERIES-->                  
+                  <prod out="p254" id="3743475">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186257,filmes-em-dvd-e-blu-ray" class="pai regra3">Filmes</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,71295,blu-ray-hetero-importado">Blu-Ray H&eacute;tero Importado</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2833,dvd-hetero-nacional">DVD Porn&ocirc; Nacional</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2834,dvd-hetero-importado">DVD Porn&ocirc; Importado</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,11221,dvd-lesbica">DVD L&eacute;sbica</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,8709,dvd-gay-nacional">DVD Gay Nacional</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,8710,dvd-gay-importado">DVD Gay Importado</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,9019,dvd-travesti">DVD Travesti</a></li>
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA FILMES-->                  
+                  <prod out="p254" id="3914066	">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,186255,penis-realisticos" class="pai regra2">P&ecirc;nis</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,37013,penis-importados">Importados</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,37011,penis-importados-vibro">Importados com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118907,penis-ate-12cm">At&eacute; 12cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118908,penis-13-a-15cm">13 a 15cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118900,penis-13-a-15cm-com-vibro">13 a 15cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118909,penis-16-a-18cm">16 a 18cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118901,penis-16-a-18cm-com-vibro">16 a 18cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118910,penis-19-a-21cm">19 a 21cm</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118902,penis-19-a-21cm-com-vibro">19 a 21cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118911,penis-22-a-24cm">22 a 24cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118903,penis-22-a-24cm-com-vibro">22 a 24cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118912,penis-acima-de-25cm">Acima de 25cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118904,penis-acima-de-25cm-vibro">Acima de 25cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118913,penis-duplo">P&ecirc;nis Duplo</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118906,penis-duplo-com-vibro">P&ecirc;nis Duplo com Vibro</a></li>
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA PENIS-->                  
+                  <prod out="p254" id="3270119">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,186256,vibradores" class="pai regra2">Vibradores</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,175759,vibradores-classicos">Vibradores Cl&aacute;ssicos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2084,vibradores-diversos">Vibradores Diversos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2085,vibradores-multi-funcoes">Vibradores Multi-Fun&ccedil;&otilde;es</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118123,vibradores-rotativos">Vibradores Rotativos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,12040,vibradores-ponto-g">Vibradores Ponto G</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2086,vibradores-femininos">Vibradores Femininos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,160330,higienizador-para-vibradores">Higienizador para Vibradores</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+				<li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,Ponta+Dupla+G-vibe">G-Vibe - Melhor Ponto G do Mundo</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,leaf">Leaf - Vibradores Ecol&oacute;gicos</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,b+swish">B Swish - Acess&oacute;rios Chiques</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,pipedream">Pipedream - Sem Limite para Fetiche</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,screaming">The Screaming O - Amantes Essenciais</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,wake-up">Wake-Up - Vibrador Despertador</a></li>
+
+
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA VIBRADORES-->                  
+                  <prod out="p254" id="3897764">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="paiCat"><a href="#" class="paiCat">Veja todos os departamentos</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186250,acessorios-eroticos">Acess&oacute;rios Er&oacute;ticos </a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,2816,bonecas-inflaveis">Bonecas/Bonecos Infl&aacute;veis</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186251,brincadeiras-e-jogos">Brincadeiras e Jogos</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186259,casa-romantica">Casa Rom&acirc;ntica</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186252,cosmeticos">Cosm&eacute;ticos Sensuais</a></li>                
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186253,fantasias-e-lingeries">Fantasias e Lingeries</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186257,filmes-em-dvd-e-blu-ray">Filmes em DVD e Blu-Ray</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186284,masturbadores-masculinos">Masturbadores Masculinos</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186278,para-presentear">Para Presentear</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186255,penis-realisticos">P&ecirc;nis Real&iacute;sticos</a></li>                
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186279,preservativos">Preservativos</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186280,sado-e-fetiches">Sadomasoquismo/Fetiche</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186256,vibradores">Vibradores</a></li>                
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,promocao,1" class="dpromolanc">PROMO&Ccedil;&Otilde;ES</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,lancamento,1" class="dpromolanc">LAN&Ccedil;AMENTOS</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li><!--<a href="http://www.lojadoprazer.com.br/natal"><img src="<BaseLoja>images/banner_natal.gif" border="0"></a>--></li>
+                 
+                
+
+              </ul>
+            </li>            
+          </ul>
+        </li>
+      </ul>
+    </div>
+     
+    
+    <div class="os_il1"></div>
+  </div>
+  <div class="os_tNbarra">
+    <div class="os_tMenuPromo">
+      <a href="/prod,idloja,<IDLoja>,lancamento,1"><img src="<BaseLoja>images/layout/bt_nf1.png" width="134" height="32" alt="Lancamentos" /></a>
+      <a href="/prod,idloja,<IDLoja>,promocao,1"><img src="<BaseLoja>images/layout/bt_nf2.png" width="128" height="32" alt="Promocoes" /></a>
+      <a href="http://www.lojadoprazer.com.br/sistema/Custom.asp?IDLoja=<IDLoja>&arq=fale_dra/fale_dra.html"><img src="<BaseLoja>images/layout/bt_nf3.png" width="187" height="32" alt="Fale com nossa dra" /></a>
+	  <a href="FaleConosco.asp?IDLoja=<IdLoja>"><img src="<BaseLoja>images/layout/bt_nf4.png" alt="Chat" /></a>
+    </div>
+    <div class="os_tBannerSeguro"><img src="<BaseLoja>images/layout/banner/segurancan.gif" width="185" height="47" alt="Compra segura" /></div>
+  </div>
+  <div class="os_tInformacoes">
+    <div class="fc_Banner1"><a href="http://www.lojadoprazer.com.br/sistema/ajuda.asp?IDLoja=343"><img src="<BaseLoja>images/layout/banner/banner1.jpg" width="690" height="50" alt="" /></div>    
+  </div>  
+</div>
+
+<!-- final barraTopo
