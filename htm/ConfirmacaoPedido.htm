@@ -1,0 +1,146 @@
+<!-- Implementação via iframe -->
+<!-- Altere onde está 9 de acordo com o Pagto utilizado na loja -->
+<!-- Pagto 1 = 9, Pagto 2 = 10, Pagto 3 = 11, Pagto 4 = 12 e Pagto 5 = 13 -->
+
+<!-- Altere onde está email@cadastradonobcash.com.br de acordo com o e-mail cadastrado no Bcash -->
+
+<!-- Este exemplo, permite a inclusão de até 10 produtos no pedido.
+   Para aumentar este limite será necessário aumentar os parâmetros de produtos (produto_codigo_X, produto_descricao_X, produto_qtde_X e produto_valor_X) -->
+
+
+<!-- Facebook Conversion Code for Venda -->
+<script>(function() {
+var _fbq = window._fbq || (window._fbq = []);
+if (!_fbq.loaded) {
+var fbds = document.createElement('script');
+fbds.async = true;
+fbds.src = '//connect.facebook.net/en_US/fbds.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(fbds, s);
+_fbq.loaded = true;
+}
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '6012472524845', {'value':'<TotalPrazo>','currency':'BRL'}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6012472524845&amp;cd[value]=<TotalPrazo>&amp;cd[currency]=BRL&amp;noscript=1" /></noscript>
+
+<!-- Facebook Conversion Code for pixel_durex_conclusãodecompra_promoreveillon -->
+<script>(function() {
+var _fbq = window._fbq || (window._fbq = []);
+if (!_fbq.loaded) {
+var fbds = document.createElement('script');
+fbds.async = true;
+fbds.src = '//connect.facebook.net/en_US/fbds.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(fbds, s);
+_fbq.loaded = true;
+}
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '6021760681290', {'value':'<TotalPrazo>','currency':'BRL'}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6021760681290&amp;cd[value]=<TotalPrazo>&amp;cd[currency]=BRL&amp;noscript=1" /></noscript>
+
+<!-- Zanox
+<script type="text/javascript">
+var aDesc=new Array("<DescritorSimples2Produto1>","<DescritorSimples2Produto2>","<DescritorSimples2Produto3>","<DescritorSimples2Produto4>","<DescritorSimples2Produto5>","<DescritorSimples2Produto6>","<DescritorSimples2Produto7>","<DescritorSimples2Produto8>","<DescritorSimples2Produto9>","<DescritorSimples2Produto10>");
+sDesc = aDesc.toString().replace(/\W<DescritorSimples2Produto\w+>/g,"");
+aDesc = sDesc.split(",");
+
+var aQtds=new Array("<QtdProduto1>","<QtdProduto2>","<QtdProduto3>","<QtdProduto4>","<QtdProduto5>","<QtdProduto6>","<QtdProduto7>","<QtdProduto8>","<QtdProduto9>","<QtdProduto10>");
+sQtds = aQtds.toString().replace(/\W<QtdProduto\w+>/g,"");
+aQtds = sQtds.split(",");
+
+var aIDPs=new Array("<IDProduto1>","<IDProduto2>","<IDProduto3>","<IDProduto4>","<IDProduto5>","<IDProduto6>","<IDProduto7>","<IDProduto8>","<IDProduto9>","<IDProduto10>");
+sIDPs = aIDPs.toString().replace(/\W<IDProduto\w+>/g,"");
+aIDPs = sIDPs.split(",");
+
+var aNoms=new Array("<NomeProduto1>","<NomeProduto2>","<NomeProduto3>","<NomeProduto4>","<NomeProduto5>","<NomeProduto6>","<NomeProduto7>","<NomeProduto8>","<NomeProduto9>","<NomeProduto10>");
+sNoms = aNoms.toString().replace(/\W<NomeProduto\w+>/g,"");
+aNoms = sNoms.split(",");
+
+var aPris=new Array("<PrecoUnitProduto1>","<PrecoUnitProduto2>","<PrecoUnitProduto3>","<PrecoUnitProduto4>","<PrecoUnitProduto5>","<PrecoUnitProduto6>","<PrecoUnitProduto7>","<PrecoUnitProduto8>","<PrecoUnitProduto9>","<PrecoUnitProduto10>");
+sPris = aPris.toString().replace(/\W<PrecoUnitProduto\w+>/g,"");
+aPris = sPris.split(",");
+
+var zXml="";
+for (var i=0;i<aDesc.length;i++){
+  if (aDesc[i] == "Durex"){
+    zCid = "DUR";
+  } else {
+    zCid = "OUT";
+  }
+    zXml += "<so qty=\""+aQtds[i]+"\" pnr=\""+aIDPs[i]+"\" pn=\""+aNoms[i]+"\" up=\""+aPris[i]+"\" cid=\""+zCid+"\" />"
+}
+
+// Encoding Forma de Pagamento
+var zFormPgtoRaw = "<FormaPagamento>";
+var zFPgtoRes = encodeURIComponent(zFormPgtoRaw)
+// Encoding Nome Produto
+var zXmlRes = encodeURIComponent(zXml);
+
+var zScr = document.createElement( "script" );
+  var zSync = escape(document.referrer); zScr.async = true;
+  zScr.src = ( document.location.protocol === "https:" ? "https:" : "http:" ) + "//ad.zanox.com/pps/?14718C815922959&mode=[[1]]&CID=[[basket]]&CustomerID=[[<IDCliente>]]&OrderID=[[<IDPedido>]]&CurrencySymbol=[[BRL]]&ReviewNote=[["+zFPgtoRes+"]]&TotalPrice=[[0]]&PartnerID=[[]]&XML=[[%3Cz%3E%3Co%3E" + zXmlRes + "%3C%2Fo%3E%3C%2Fz%3E]]"
+  var zElem =document.getElementsByTagName('script')[0];
+    zElem.parentNode.insertBefore(zScr,zElem);
+</script>
+
+<script>
+(function(){
+        var wSrc = document.createElement('script');
+        wSrc.type = 'text/javascript';
+        wSrc.async = true;
+        wSrc.src = (document.location.protocol === "https:" ? "https:" : "http:") + "//serverwup.com/adswup/2014/Durex/remarketing.js";
+        var wPlace = document.getElementsByTagName('script')[0];
+        wPlace.parentNode.insertBefore(wSrc,wPlace);
+    }());
+</script>
+
+<!-- script CityAds 
+<script>
+//Função que carrega os scripts-------------
+function fnLoadScript(src,IsAsync){
+    var fcw=document.createElement('script');
+    fcw.type='text/javascript';
+    fcw.async=IsAsync;
+    fcw.src=src;
+    var s=document.getElementsByTagName('script')[1];
+    s.parentNode.insertBefore(fcw,s);
+  }
+
+fnLoadScript("https://cityadspix.com/track/<IDPedido>/ct/q1/c/13005?customer_type=N&order_total=<TotalSemFrete>&currency=BRL&md=2",true);
+</script> -->
+
+<script type="text/javascript">
+  var apiKey = "9uAx1Fo87OYBp7y840431L0eO3";
+  var apiLogin = "pK0oalkYqTwFhuO";
+  var accountId = "534162";
+  var merchantId = "532239";
+  var referenceCode = "<IDLoja>-<NumPedido>-<IDPedido>"; // Número do pedido formado por IDLoja-NumPedido-IDPedido
+  var valorPedido = "<TotalPrazo>"; // Valor total do pedido
+  var partnerId = "512022";
+  var signature = apiKey +"~"+ merchantId +"~"+ referenceCode +"~"+ valorPedido +"~BRL";
+  var  hash = CryptoJS.MD5(signature);
+
+ if(<IDFormaPagamento>==11){
+  var sPayU= '<form action="https://gateway.payulatam.com/ppp-web-gateway/" name="payu" method="post" id="payulatam-form" target="_blank">';
+  sPayU+='<input type="hidden" name="merchantId" value="'+ merchantId +'">';
+  sPayU+='<input type="hidden" name="accountId"  value="'+ accountId +'"/>';
+  sPayU+='<input type="hidden" name="referenceCode" value="'+ referenceCode +'">';
+  sPayU+='<input type="hidden" name="partnerId" value="'+ partnerId +'">';
+  sPayU+='<input type="hidden" name="description" value="Pedido #<NumPedido> realizado na loja <NomeLoja>">';
+  sPayU+='<input type="hidden" name="amount" value="'+ valorPedido +'">';
+  sPayU+='<input type="hidden" name="tax" value="0">';
+  sPayU+='<input type="hidden" name="taxReturnBase" value="0">';
+  sPayU+='<input type="hidden" name="algorithmSignature" value="MD5">';
+  sPayU+='<input type="hidden" name="signature" value="'+ hash +'">';
+  sPayU+='<input type="hidden" name="currency" value="BRL">';
+  sPayU+='<input type="hidden" name="buyerEmail" value="<EmailPedido>">';
+  sPayU+='<input name="test" type="hidden" value="0"/>';
+  sPayU+='<input type="image" border="0" alt="" src="http://www.payulatam.com/img_botones_herramientas/btn-pagar-port-mediano.png "/>';
+  sPayU+='</form>';
+  document.getElementById('idTxtPaymentMethodFC').innerHTML='<br /><center><b>Clique no botão abaixo para prosseguir</b><br /><br />'+ sPayU +'</center>';
+ }
+</script>
