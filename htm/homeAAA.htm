@@ -1,0 +1,149 @@
+<script>
+function MostraMaxParcela(PrecoProd,MaxParcelas){
+  var ComSem;
+  if(PrecoProd>=15)MaxParcelas=3;
+  else if(PrecoProd>=1)MaxParcelas=1;
+  if(PrecoProd==0||MaxParcelas==1||Juros.length==0)return;
+  if(MaxParcelas==0||MaxParcelas>Juros.length)MaxParcelas=Juros.length;
+  if(Juros[MaxParcelas-1]>0)ComSem=""; else ComSem="&nbsp;sem&nbsp;juros</font>";
+  document.write("ou&nbsp;<b>"+MaxParcelas+"x</b>"+ComSem+" de&nbsp;<b>"+FormatPrecoReais(CalculaParcelaJurosCompostos(PrecoProd,MaxParcelas))+"</b>");
+}
+</script>
+<script type="text/javascript">
+// jquery banner cycle
+$(function() {
+  $("#slideshow").cycle({  
+    fx:        	'scrollHorz',        
+    timeout:	 6000,   
+    pager:		'#nav'
+  });
+});
+</script>
+<script type="text/javascript">
+// jquery marcas cycle
+$(function() {
+  $("#os_marcas").cycle({  
+    fx: 'scrollHorz',
+	speed: 600,
+	timeout: 0,
+    autostop: true,
+	prev : '.prev_marca',
+    next : '.next_marca'
+  });
+});
+</script>
+<div class="row1_1">
+  <div class="os_tPromocoes" id="bannerhome">
+    <div id="nav" class="nav"></div>
+    <div id="slideshow" class="pics">
+      <banner 1>
+      <banner 2>
+      <banner 3>
+      <banner 4>
+    </div>
+  </div>
+  <div class="os_tMarcas" id="marcahome">    
+    <a href="#" class="next_marca"></a>
+    <a href="#" class="prev_marca"></a>
+    <div id="os_marcas">
+      <span>
+        <a href="/prod,idloja,343,texto,blush"><img alt="" src="../lojas/00000343/images/carrossel/picture7.jpg"></a>
+        <a href="/prod,idloja,343,texto,evolved"><img alt="" src="../lojas/00000343/images/carrossel/picture8.jpg"></a>
+        <a href="/prod,idloja,343,texto,leaf"><img alt="" src="../lojas/00000343/images/carrossel/picture9.jpg"></a>
+        <a href="/prod,idloja,343,texto,hustler"><img alt="" src="../lojas/00000343/images/carrossel/picture10.jpg"></a>
+        <a href="/prod,idloja,343,texto,vanity"><img alt="" src="../lojas/00000343/images/carrossel/picture11.jpg"></a>
+        <a href="/prod,idloja,343,texto,pipedream"><img alt="" src="../lojas/00000343/images/carrossel/picture1.jpg"></a>
+        <a href="/prod,idloja,343,texto,picobong"><img alt="" src="../lojas/00000343/images/carrossel/picture2.jpg"></a>
+        <a href="/prod,idloja,343,texto,screaming"><img alt="" src="../lojas/00000343/images/carrossel/picture3.jpg"></a>
+        <a href="/prod,idloja,343,texto,zini"><img alt="" src="../lojas/00000343/images/carrossel/picture4.jpg"></a>
+      </span>
+      <span>
+        <a href="/prod,idloja,343,texto,lelo"><img alt="" src="../lojas/00000343/images/carrossel/picture5.jpg"></a>
+        <a href="/prod,idloja,343,texto,bswish"><img alt="" src="../lojas/00000343/images/carrossel/picture6.jpg"></a>
+      </span>
+    </div>    
+  </div>
+</div>
+<div class="row1_1" style="padding:10px 0;">
+  <div class="row2_1">
+    <!--esquerda-->
+    <div class="os_eNewsletter">
+      <iframe width="240px" height="250px" scrolling="no" frameborder="0" name="news_" id="news_" src="/custom.asp?idloja=343&arq=AbtNewsletter.htm&int=1"></iframe>
+    </div>
+    <div class="os_eBanner"><banner 5></div>
+    <div class="os_ePreco">
+      <h2>Escolha por faixa de pre&ccedil;o</h2>
+      <ul>
+        <li><a href="/prod,idloja,343,avancada,1,precode,0,precoate,100">At&eacute; R$ 100</a></li>
+        <li><a href="/prod,idloja,343,avancada,1,precode,100,precoate,150">R$ 100 at&eacute; R$ 150</a></li>
+        <li><a href="/prod,idloja,343,avancada,1,precode,150,precoate,200">R$ 150 at&eacute; R$ 200</a></li>
+        <li><a href="/prod,idloja,343,avancada,1,precode,200,precoate,10000">Acima de R$ 200</a></li>       
+      </ul>
+    </div>
+    <div class="os_eDepartamentos">
+      <h2>Departamentos</h2>
+      <ul>
+        <li><a href="/prod,idloja,343,IDCategoria,186250,acessorios-eroticos">Acess&oacute;rios Eróticos</a></li>
+        <li><a href="/prod,IDLoja,343,IDCategoria,186251,brincadeiras-e-jogos">Brincadeiras e Jogos</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,186259,casa-romantica">Casa Rom&acirc;ntica</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,186252,cosmeticos">Cosm&eacute;ticos e Outros</a></li>
+        <li><a href="/prod,IDLoja,343,IDCategoria,2149,bombas-penianas">Desenvolvedores Penianos</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,2110,fantasias-femininas">Fantasias Er&oacute;ticas</a></li>
+        <li><a href="/prod,IDLoja,343,IDCategoria,71295,blu-ray-hetero-importado">Filmes em Blu-ray</a></li>
+        <li><a href="/prod,IDLoja,343,IDCategoria,2834,dvd-hetero-importado">Filmes em DVD H&eacute;tero</a></li>
+        <li><a href="/prod,IDLoja,343,IDCategoria,8709,dvd-gay-nacional">Filmes em DVD Gay</a></li>
+        <li><a href="/prod,IDLoja,343,IDCategoria,2816,bonecas-inflaveis">Infl&aacute;veis</a></li>
+        <li><a href="/prod,idloja,343,idcategoria,186253,lingeries-eroticas">Lingeries Er&oacute;ticas</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,186278,para-presentear">Para Presentear</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,186255,penis-realisticos">Pênis Real&iacute;sticos</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,186279,preservativos">Preservativos (Camisinhas)</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,186280,sado-e-fetiches">Sado e Fetiches</a></li>
+        <li><a href="/prod,idloja,343,IDCategoria,186284,masturbadores-masculinos">Masturbadores Masculinos</a></li>
+        <li><a href="/prod,idloja,343,avancada,true,digitada,true,texto,leaf+zini+b-swish+lelo+evolved,any,true">Vibradores de Luxo</a></li>
+      </ul>
+    </div>
+ </div>
+  <div class="row2_2">
+  <!--content-->
+    <ul class="tabs">
+      <li><a href="#tab1">LAN&Ccedil;AMENTOS</a></li>
+      <li><a href="#tab2">+ VENDIDOS</a></li>
+      <li><a href="#tab3">PROMO&Ccedil;&Otilde;ES</a></li>    
+    </ul>
+    <div class="tab_container">
+      <div id="tab1" class="tab_content">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">    
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">    
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+      </div>
+      <div id="tab2" class="tab_content">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">    
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">    
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+      </div>
+      <div id="tab3" class="tab_content">
+        <prod out="p255" em="promo,rand">
+        <prod out="p255" em="promo,rand">
+        <prod out="p255" em="promo,rand">    
+        <prod out="p255" em="promo,rand">
+        <prod out="p255" em="promo,rand">
+        <prod out="p255" em="promo,rand">    
+        <prod out="p255" em="promo,rand">
+        <prod out="p255" em="promo,rand">
+        <prod out="p255" em="promo,rand">
+      </div>
+    </div>
+  </div>
+</div>
