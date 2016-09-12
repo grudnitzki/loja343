@@ -1,0 +1,89 @@
+<style type="text/css">
+#tabrodapeexterno, .os_rodape { height:279px !important; background:#F7F7F7 !important}
+.os_tbanner1 { left:390px !important}
+</style>
+<div class="fc-rodape-info">A E-Business Network Ltda, detentora e administradora da Loja do Prazer, sob nº de CNPJ: 03.747.087/0001-53, fica sediada em São Paulo/SP - Brasil</div>
+<div class="os_rodape">
+  <img src="<BaseLoja>images/layout/pedRodape.gif" alt="" /> 
+</div>
+<script type="text/javascript">
+//Personalização dos passos da compra com imagens
+var TemPassosCompra=document.getElementById("PassosCompra"); 
+if(TemPassosCompra){
+var passo1=document.getElementById("idPasso1FC"); 
+var passo2=document.getElementById("idPasso2FC"); 
+var passo3=document.getElementById("idPasso3FC"); 
+var passo4=document.getElementById("idPasso4FC"); 
+var passo5=document.getElementById("idPasso5FC"); 
+if(passo1.className=='EstPassoCompraAtual')
+passo1.innerHTML="<img src=<BaseLoja>images/Passo1Atual.gif width=78 height=87>";
+else if(passo1.className=='EstPassoCompraPre')
+passo1.innerHTML="<img src=<BaseLoja>images/Passo1Pre.gif width=78 height=87>";
+if(passo2.className=='EstPassoCompraAtual')
+passo2.innerHTML="<img src=<BaseLoja>images/Passo2Atual.gif width=75 height=87>";
+else if(passo2.className=='EstPassoCompraPre')
+passo2.innerHTML="<img src=<BaseLoja>images/Passo2Pre.gif width=75 height=87>";
+else if(passo2.className=='EstPassoCompraPos')
+passo2.innerHTML="<img src=<BaseLoja>images/Passo2Pos.gif width=75 height=87>";
+if(passo3.className=='EstPassoCompraAtual')
+passo3.innerHTML="<img src=<BaseLoja>images/Passo3Atual.gif width=76 height=87>";
+else if(passo3.className=='EstPassoCompraPre')
+passo3.innerHTML="<img src=<BaseLoja>images/Passo3Pre.gif width=76 height=87>";
+else if(passo3.className=='EstPassoCompraPos')
+passo3.innerHTML="<img src=<BaseLoja>images/Passo3Pos.gif width=76 height=87>";
+if(passo4.className=='EstPassoCompraAtual')
+passo4.innerHTML="<img src=<BaseLoja>images/Passo4Atual.gif width=77 height=87>";
+else if(passo4.className=='EstPassoCompraPre')
+passo4.innerHTML="<img src=<BaseLoja>images/Passo4Pre.gif width=77 height=87>";
+else if(passo4.className=='EstPassoCompraPos')
+passo4.innerHTML="<img src=<BaseLoja>images/Passo4Pos.gif width=77 height=87>";
+if(passo5.className=='EstPassoCompraAtual')
+passo5.innerHTML="<img src=<BaseLoja>images/Passo5Atual.gif width=412 height=87>";
+else if(passo5.className=='EstPassoCompraPos')
+passo5.innerHTML="<img src=<BaseLoja>images/Passo5Pos.gif width=412 height=87>";
+}
+</script>
+<script>
+var osPag=document.location.href.toUpperCase();
+//formata cadastro
+if((osPag.indexOf("CADASTRO.ASP")>=0) && (osPag.indexOf("RND")<0)) {
+document.getElementById('idCommentsConfirmation').innerHTML = 'Comentários <span class="os_coment">(Opcional)</span><br><span class="os_coment2">Utilize o espaço abaixo para mensagens personalizadas em presentes ou para instruções adicionais de envio:</span>';}
+//formata frete1
+if((osPag.indexOf("RECALCULA.ASP")>=0) && (osPag.indexOf("PASSORECALCULACEP")<=0)) {
+  function ad_style_frete() {
+    var get_tags_frete = document.getElementsByTagName('table');
+    get_tags_frete[6].style.padding = '30px';  
+    get_tags_frete[6].style.background = '#FFFFFF';
+    get_tags_frete[6].style.width = '850px';
+  get_tags_frete[5].style.width = '850px';
+    get_tags_frete[5].style.margin = '0 auto';
+  get_tags_frete[5].style.height = '250px';
+  }
+  window.onload = ad_style_frete;
+}
+//formata envio
+if((osPag.indexOf("PASSORECALCULACEP")>=0)) {
+  function ad_style_envio() {
+    var get_tags_envio = document.getElementsByTagName('table');
+  get_tags_envio[5].style.width = '850px';
+    get_tags_envio[5].style.margin = '0 auto';  
+  document.getElementById('formatEnvio').innerHTML = '<img src="<BaseLoja>images/layout/pedRodapeEnvio.gif" alt="" />';
+  }
+  window.onload = ad_style_envio;
+}
+</script>
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?8hUx9OhqQTRjjSbj10mIp91kWBuDfteF';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
+<style type="text/css">
+.EstPassoCompraDiv{display:none}
+</style>
+
+<!-- Remarketing Tag WakeUP -->
+<script async type="text/javascript" src="https://serverwup.com/adswup/2014/Durex/remarketing.js"></script>
