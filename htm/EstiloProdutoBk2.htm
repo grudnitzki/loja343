@@ -1,0 +1,433 @@
+	// FastCommerce - EstiloProduto0.htm
+
+<ProdTop>
+<CENTER><TABLE WIDTH="97%" CELLPADDING="0" CELLSPACING="0">
+	<TR>
+		<TD ALIGN="RIGHT">
+<script>
+//Ordenação
+var sPag=document.location.href.toUpperCase();
+if(sPag.indexOf("/PROD,")==-1){sConcat="&";sCharSep="=";} else {sConcat=",,";sCharSep=",";}
+if((sPag.indexOf("&DET=")==-1 && sPag.indexOf("&IDPRODUTO=")==-1) && (sPag.indexOf(",DET,")==-1 && sPag.indexOf(",IDPRODUTO,")==-1)){
+  document.write("<br><select id=OrderProd class=smSelect onchange=NewOrder()>");
+  document.write("<option value=-1>Ordenar por</option>");
+  document.write("<option value=0>Padrão</option>");
+  document.write("<option value=1>Lançamentos</option>");
+  document.write("<option value=2>Destaques</option>");
+  document.write("<option value=3>Nomes das categorias</option>");
+  document.write("<option value=4>Nomes dos produtos</option>");
+  document.write("<option value=5>Avaliações dos clientes</option>");
+  document.write("<option value=7>Preços menores</option>");
+  document.write("<option value=8>Preços maiores</option>");
+  document.write("</select>");
+  var oOrder=document.getElementById('OrderProd');
+  var posOrder=sPag.indexOf("ORDER"+sCharSep);
+  if(posOrder!=-1){
+    var iOrderCurrent=sPag.substr(posOrder+6,1);
+    if(!isNaN(iOrderCurrent))if(iOrderCurrent>=0){
+      var i=0;
+      while(i<oOrder.length && oOrder.options[i].value!=iOrderCurrent)i++;
+      if(i<oOrder.length)oOrder.selectedIndex=i;
+    }
+  }
+}
+
+function NewOrder(){
+  var iOrder=oOrder.options[oOrder.selectedIndex].value;
+  if(iOrder>=0){
+    if(posOrder!=-1){document.location.href=document.location.href.replace('order'+sCharSep+iOrderCurrent,'order'+sCharSep+iOrder);}
+    else{document.location.href=document.location.href+sConcat+'order'+sCharSep+iOrder;}
+  }
+}
+</script>
+	</TD>
+	</TR>
+	</TABLE><BR>
+</ProdTop>:
+
+
+<ProdLista>
+<div id="ProdListaDiv">
+<CENTER><TABLE WIDTH="100%" CELLPADDING="5" CELLSPACING="5">
+<TR>
+	<TD WIDTH="236" valign="top">
+	<CENTER>
+		<a href='/prod,idloja,<IDLojaNum>,idproduto,<IDProduto>,<NomeProdUA>'><ImagemProd></a><BR><BR>
+		<a href='/prod,idloja,<IDLojaNum>,idproduto,<IDProduto>,<NomeProdUA>'><IMG SRC="<baseloja>/images/BotMaisDetalhes.gif" ALT="Clique para Mais Detalhes" BORDER="0"></A><br>
+		<a href='/prod,idloja,<IDLojaNum>,idproduto,<IDProduto>,<NomeProdUA>' class="TitProduto">Ref: <CodProd> - <NomeProd></a><BR><BR>
+
+	
+	</CENTER>
+	</TD>
+	
+	<TD WIDTH="1" valign="top"><img src="<baseloja>images/BarraHome_Rosa.jpg" alt="Sex Shop"></TD>
+
+</TR>
+</TABLE></CENTER>
+</div>
+
+
+
+</ProdLista>
+
+
+<ProdDet>
+<div id="ProdDetDiv">
+
+
+
+<table width=100% name=TabProduto<IDProduto> cellpadding=0 cellspacing=0>
+  <tr><td align=center colspan=3><br>
+  
+             <table name=TabNomeRefProd<IDProduto> width=100% cellpadding=2 cellspacing=2>
+              <tr>
+                <td class=EstNomeProd>&nbsp;&nbsp;<NomeProd></td>
+                <td width=1><img src=images/shim.gif width=1 height=1></td>
+                <td valign=top align=right rowspan=2 nowrap><Lancamento></td>
+              </tr>
+              <tr>
+                <td valign=top class=EstRefProd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ref: <CodProd> - <LegendaCat> <NomeCat></td>
+                <td></td>
+              </tr>
+            </table>
+  
+  
+  </td></tr>
+  <tr>
+    <td align=center valign=top width=<ProdLargura>><ImagemProd><BR><BR>
+	
+	<center><TABLE CELLPADDING="0" CELLSPACING="0">
+	<TR>
+		<TD height="50"><center><LinkAmp>&nbsp;</center></TD>
+		<TD height="50"><DIV CLASS="descrurlclass"><DescrURL></DIV>&nbsp;&nbsp;</TD>
+	</TR>
+	</TABLE></center>
+	
+	
+
+<BR><BR>
+
+<center><table><tr>
+  <td>
+    <table>
+      <tr><td>Compartilhe:</td></tr>
+      <tr><td align=center>
+        <table width=100%>
+          <tr><td><ShareFacebook></td><td><ShareTwitter></td><td><ShareOrkut></td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </td>
+  <td width=60 align=center><Facebook type="like" layout="box_count"></td>
+  <td width=60 align=center><GooglePlusOne size="tall"></td>
+</tr></table></center>
+
+<BR>
+
+
+
+</td>
+    <td width=7 height=<ProdAltura>><img src=images/shim.gif width=7 height=<ProdAltura>></td>
+    <td valign=top>
+      <table name=TabDadosProduto<IDProduto> width=100% cellpadding=0 cellspacing=0>
+        <tr>
+          <td valign=top>
+
+          </td>
+        </tr>
+        <tr><td height=7><img src=images/shim.gif width=1 height=7></td></tr>
+        <tr><td valign=top class=EstDescrProd><Descricao><BR><DescrHTM></td></tr>
+			<tr>
+				<td><SPAN class=EstDescrProd>
+				<b>Disponibilidade:</b> em estoque. Postagem no dia ou no primeiro dia útil. Valor do produto SEM frete. Frete à contratar. Valores variam conforme opção de envio. Imagem meramente ilustrativa.<br><br>
+
+				Oferecemos uma garantia EXCLUSIVA da Loja do Prazer Sex Shop de 3 meses em todos os produtos com vibrador e 7 dias para trocas por qualquer motivo.<BR><BR>
+
+					<b>Ainda com dúvida sobre este produto? Consulte nossa <a href="http://www.lojadoprazer.com.br/sex-shop/ajuda">base de conhecimento</a>, com diversas dúvidas frequentes, ou ligue: (11) 5034-7444 - Das 09:00 às 18:00hs (De segunda à sexta).</b><BR><BR>
+
+					<h1 style="font-family: Calibri; font-size: 10pt; margin-top: 0px; color: #4d4d4d;">Sex Shop com Produtos Eróticos de Qualidade. Loja do Prazer - Lider, Completa e Descomplicada</h1>
+					</span></td>
+			  </tr>
+        <tr>
+          <td valign=top>
+            <table name=TabAdicionais<IDProduto> cellpadding=0 cellspacing=0>
+              <tr><td height=3><img src=images/shim.gif width=1 height=3></td></tr><FormProd>
+              <tr>
+                <td>
+                  <table name=Tab1Adic<IDProduto> cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td nowrap><Adicional1></td>
+                      <td nowrap><Adicional2></td>
+                      <td nowrap><Adicional3></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table name=Tab2Adic<IDProduto> cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td nowrap><Cor></td>
+                      <td nowrap><AdicionalD1></td>
+                      <td nowrap><AdicionalD2></td>
+                      <td nowrap><AdicionalD3></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr><td align=right class=EstMaisInfo nowrap><BR></td></tr>
+        <tr>
+          <td valign=top>
+            <table name=TabPreco<IDProduto> width=100% cellpadding=0 cellspacing=0>
+              <tr><td height=1 colspan=5><img src=images/shim.gif width=1 height=1></td></tr>
+              <tr>
+                <td width=15% nowrap></td>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td align=center width=15% nowrap><LinkComprar></td></FormProd>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td nowrap class=EstPrecoProd nowrap><Preco><AvisoDisp><IndicaProd><br><LinkOpiniao></td>
+              </tr>
+            </table><br>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+<Sub>
+  <tr>
+    <td align=right valign=top width=<ProdLargura>>
+      <table cellspacing=0 cellpadding=3><tr><td valign=top align=center><ImagemProd></td></tr></table>
+    </td>
+    <td width=7><img src=images/shim.gif width=7 height=1></td>
+    <td valign=top>
+
+      <table name=TabDadosSubProduto<IDProduto> cellpadding=0 cellspacing=3 width=100% class=<EstiloSubProduto>>
+        <tr>
+          <td class=EstLinhaSubProd height=1><img src=images/shim.gif width=1 height=1></td>
+        </tr>
+        <tr>
+          <td valign=top>
+            <table name=TabRefSubProd<IDProduto> width=100% cellpadding=2 cellspacing=0>
+              <tr>
+                <td valign=top class=EstRefSubProd><CodProd></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr><td valign=top class=EstDescrSubProd><Descricao><DescrHTM></td></tr>
+        <tr>
+          <td valign=top>
+            <table name=TabAdicionaisSub<IDProduto> cellpadding=0 cellspacing=0>
+              <tr><td></td></tr>
+              <tr>
+                <td>
+                  <table name=Tab1Adic<IDProduto> cellpadding=0 cellspacing=0><FormProd>
+                    <tr>
+                      <td nowrap><Adicional1></td>
+                      <td nowrap><Adicional2></td>
+                      <td nowrap><Adicional3></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table name=Tab2Adic<IDProduto> cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td nowrap><Cor></td>
+                      <td nowrap><AdicionalD1></td>
+                      <td nowrap><AdicionalD2></td>
+                      <td nowrap><AdicionalD3></td>
+                      <td nowrap><Peso></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr><td align=right class=EstMaisInfo nowrap><DescrURL></td></tr>
+        <tr>
+          <td valign=top>
+            <table name=TabPrecoSub<IDProduto> width=100% cellpadding=0 cellspacing=0>
+              <tr>
+                <td width=15% nowrap><LinkDet></td>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td align=center width=15% nowrap><LinkComprar></td></FormProd>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td nowrap class=EstPrecoSubProd nowrap><Preco><AvisoDisp></td>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td valign=top align=right nowrap><Lancamento></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</Sub>
+</table>
+</div>
+</ProdDet>
+
+
+
+
+<ProdAmp>
+<div id="ProdAmpDiv">
+<table width=100% name=TabProduto<IDProduto> cellpadding=0 cellspacing=0>
+  <tr><td align=center colspan=2><br></td></tr>
+  <tr>
+    <td width=7 height=<ProdAltura>><img src=images/shim.gif width=7 height=<ProdAltura>></td>
+    <td valign=top>
+      <table name=TabDadosProduto<IDProduto> width=100% cellpadding=0 cellspacing=0>
+        <tr>
+          <td valign=top>
+            <table name=TabNomeRefProd<IDProduto> width=100% cellpadding=0 cellspacing=0>
+              <tr>
+                <td class=EstNomeProd>&nbsp;&nbsp;&nbsp;<NomeProd></td>
+                <td width=1><img src=images/shim.gif width=1 height=1></td>
+                <td valign=top align=right rowspan=2 nowrap><Lancamento></td>
+              </tr>
+              <tr>
+                <td valign=top class=EstRefProd>&nbsp;&nbsp;&nbsp;&nbsp;Ref. <CodProd> - <LegendaCat> <NomeCat></td>
+                <td></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr><td height=7><img src=images/shim.gif width=1 height=7></td></tr>
+        <tr><td><ImagemProd></td></tr>
+        <tr>
+          <td valign=top>
+            <table name=TabAdicionais<IDProduto> cellpadding=0 cellspacing=0>
+              <tr><td height=3><img src=images/shim.gif width=1 height=3></td></tr><FormProd>
+              <tr>
+                <td>
+                  <table name=Tab1Adic<IDProduto> cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td nowrap><Adicional1></td>
+                      <td nowrap><Adicional2></td>
+                      <td nowrap><Adicional3></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table name=Tab2Adic<IDProduto> cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td nowrap><Cor></td>
+                      <td nowrap><AdicionalD1></td>
+                      <td nowrap><AdicionalD2></td>
+                      <td nowrap><AdicionalD3></td>
+                      <td nowrap><Peso></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr><td align=right class=EstMaisInfo nowrap></td></tr>
+        <tr>
+          <td valign=top>
+            <table name=TabPreco<IDProduto> width=100% cellpadding=0 cellspacing=0>
+              <tr><td height=1 colspan=5><img src=images/shim.gif width=1 height=1></td></tr>
+              <tr>
+                <td width=15% nowrap><LinkDet></td>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td align=center width=15% nowrap><LinkComprar></td></FormProd>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td nowrap class=EstPrecoProd nowrap><Preco><AvisoDisp><IndicaProd><br><LinkOpiniao></td>
+              </tr>
+            </table><br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table width=100% name=TabSubs cellpadding=0 cellspacing=0>
+<Sub>
+              <tr>
+                <td align=right valign=top width=<ProdLargura>>
+                  <table cellspacing=0 cellpadding=3><tr><td valign=top align=center><ImagemProd></td></tr></table>
+                </td>
+                <td width=7><img src=images/shim.gif width=7 height=1></td>
+                <td valign=top>
+                  <table name=TabDadosSubProduto<IDProduto> cellpadding=0 cellspacing=3 width=100% class=<EstiloSubProduto>>
+                    <tr>
+                      <td class=EstLinhaSubProd height=1><img src=images/shim.gif width=1 height=1></td>
+                    </tr>
+                    <tr>
+                      <td valign=top>
+                        <table name=TabRefSubProd<IDProduto> width=100% cellpadding=2 cellspacing=0>
+                          <tr>
+                            <td valign=top class=EstRefSubProd><CodProd></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr><td valign=top class=EstDescrSubProd><Descricao></td></tr>
+                    <tr>
+                      <td valign=top>
+                        <table name=TabAdicionaisSub<IDProduto> cellpadding=0 cellspacing=0>
+                          <tr><td></td></tr>
+                          <tr>
+                            <td>
+                              <table name=Tab1Adic<IDProduto> cellpadding=0 cellspacing=0><FormProd>
+                                <tr>
+                                  <td nowrap><Adicional1></td>
+                                  <td nowrap><Adicional2></td>
+                                  <td nowrap><Adicional3></td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <table name=Tab2Adic<IDProduto> cellpadding=0 cellspacing=0>
+                                <tr>
+                                  <td nowrap><Cor></td>
+                                  <td nowrap><AdicionalD1></td>
+                                  <td nowrap><AdicionalD2></td>
+                                  <td nowrap><AdicionalD3></td>
+                                  <td nowrap><Peso></td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr><td align=right class=EstMaisInfo nowrap><DescrURL></td></tr>
+                    <tr>
+                      <td valign=top>
+                        <table name=TabPrecoSub<IDProduto> width=100% cellpadding=0 cellspacing=0>
+                          <tr>
+                            <td width=15% nowrap><LinkDet></td>
+                            <td width=7><img src=images/shim.gif width=7 height=1></td>
+                            <td align=center width=15% nowrap><LinkComprar></td></FormProd>
+                            <td width=7><img src=images/shim.gif width=7 height=1></td>
+                            <td nowrap class=EstPrecoSubProd nowrap><Preco><AvisoDisp></td>
+                            <td width=7><img src=images/shim.gif width=7 height=1></td>
+                            <td valign=top align=right nowrap><Lancamento></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+</Sub>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</div>
+</ProdAmp>
