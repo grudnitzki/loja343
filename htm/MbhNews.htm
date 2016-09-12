@@ -1,0 +1,61 @@
+<br />
+<table width="280" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<span id="idTxtInitNewsFC"><b>Aqui você encontra as últimas notícias e <i>press releases</i> relacionados à<b> Loja do Prazer Sex Shop, Sexshop Online</b>.<br></b></span>
+		</td>
+	</tr>
+</table>
+<br />
+<form name=BuscaNoticia method=GET action=/sistema/noticias.asp>
+<input type=hidden name=IDLoja value=343>
+<table class="EstTabQuadroCustom" width="280" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+		<td  class="mntxt">
+			<b>Localize textos específicos:</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input id="TextoBuscaNews" class="InputText" type="text" style="width:200px" value="" name="TextoBuscaNews" maxlength="20" size="20">
+		</td>
+	</tr>
+	<tr>
+		<td class="mntxt">
+			<b>Procurar resultados:</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+				<select id="Any" class="smSelect" size="1" name="Any">
+				<option value="False">com todas as palavras</option>
+				<option value="True">com qualquer uma das palavras</option>
+				</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+				<input id="Procurar" class="InputButton" type="submit" value=" Buscar " name="Procurar">
+				<input id="Todas" class="InputButton" type="button" onclick="self.location.href='/sistema/noticias.asp?IDLoja=343'" value=" Ver todas " name="Todas">
+		</td>
+	</tr>
+</table>
+</form>
+<br />
+<div>
+    <div class="rssDiv">
+        <div id="divRss3"></div>
+    </div>
+</div>
+<script type="text/javascript" src="<Baseloja>htm/js/jQueryRss.js"></script>
+<script type="text/javascript" src="<Baseloja>htm/js/MomentLangsMin.js"></script>
+<script type="text/javascript" src="<Baseloja>htm/js/FeedEk.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#divRss3').FeedEk({
+            FeedUrl: 'http://www.lojadoprazer.com.br/XMLNoticias.asp?IDLoja=343',
+            MaxCount: 15,
+            ShowDesc: false
+        });
+    });
+</script>
